@@ -1,0 +1,22 @@
+[
+	{
+		"OrganizationName": "IPL",
+		"OrganizationId": "1",
+		"Description": "Indian Premier League"
+	},
+	{
+		"OrganizationName": "CPL",
+		"OrganizationId": "2",
+		"Description": "Carrabean Premier League"
+    },
+    {
+		"OrganizationName": "BPL",
+		"OrganizationId": "3",
+		"Description": "Bangladesh Premier League" 
+	},
+	{
+		"OrganizationName": "BBL",
+		"OrganizationId": "4",
+		"Description": "Big Bash League"
+	}
+]

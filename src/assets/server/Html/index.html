@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../styles/normalize.css">
+
+</head>
+
+<body>
+    <header>
+        <section id="topSection">
+            <img src='logo.jpg'>
+            <img src='picture.jpg' id="topNavBarImage">
+        </section>
+        <h1>
+            Welcome to the Tournament management
+        </h1>
+    </header>
+    <main>
+        <form>
+            <label for="selectTournament">Please select the Tournament</label>
+            <input type="text" required id="selectTournament">
+        </form>
+    </main>
+    <button type="button" class="search" (click)="search()" label="Sign in">Search </button>
+    </main>
+    <aside>
+        <h2>Login</h2>
+        <div>
+            <label>User Name</label>
+            <input type="text" required id= "userName">
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="text" required>
+        </div>
+        <button type="button" class="login" (click)="login()" label="login">
+            Log in
+        </button>
+
+        </h2>
+    </aside>
+    <form>
+        <h2>Register Group</h2>
+        <div>
+            <label>Team Name</label>
+            <input type="text" required>
+        </div>
+        <div>
+            <label>Team Id</label>
+            <input type="text" required>
+        </div>
+        <div>
+            <label>Owner Name</label>
+            <input type="text" required>
+        </div>
+        <div>
+            <label>Owner Phone</label>
+            <input type="number" required>
+        </div>
+        <div>
+            <label>Owner email</label>
+            <input type="email" required>
+        </div>
+        <div>
+            <label>Reaming slots</label>
+            <b>From BE</b>
+        </div>
+        <div>
+            <label>Tournament Name</label>
+            <b>From BE</b>
+        </div>
+        <button type="submit" class="register" label="Register">Register Group
+        </button>
+        <button type="button" class="reset" (click)="reset()" label="Reset"> Reset
+        </button>
+    </form>
+    <footer>
+
+    </footer>
+</body>
+
+</html>

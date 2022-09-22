@@ -1,0 +1,19 @@
+#topSection
+{
+    display: flex;
+    background-color: lightblue; 
+    padding-bottom: 1 rem;
+    height: 40px;
+}
+
+#topNavBarImage
+{
+    float: right;
+}
+
+.h1
+{
+    display: flex;
+    align-content: center;
+}
+
