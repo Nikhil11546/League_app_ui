@@ -2,21 +2,26 @@
 	{
 		"OrganizationName": "IPL",
 		"OrganizationId": "1",
-		"Description": "Indian Premier League"
+		"Description": "Indian Premier League",
+		"ImageUrl": "../../assets/images/IPL_ICON.png"
 	},
 	{
 		"OrganizationName": "CPL",
 		"OrganizationId": "2",
-		"Description": "Carrabean Premier League"
+		"Description": "Carrabean Premier League",
+		"ImageUrl": "../../assets/images/CPL_Icon.jpg"
     },
     {
 		"OrganizationName": "BPL",
 		"OrganizationId": "3",
-		"Description": "Bangladesh Premier League" 
+		"Description": "Bangladesh Premier League",
+		"ImageUrl": "../../assets/images/BPL_ICON.png" 
 	},
 	{
 		"OrganizationName": "BBL",
 		"OrganizationId": "4",
-		"Description": "Big Bash League"
+		"Description": "Big Bash League",
+		"ImageUrl": "../../assets/images/BBL_ICON.jpg"
+
 	}
 ]

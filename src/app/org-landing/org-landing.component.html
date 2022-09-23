@@ -1,12 +1,41 @@
 <section>
-    <div>
-    </div>
-    <div>
-    </div>
-    <div>
-    </div>
-    <div>
-    </div>
-    <div>
-    </div>
+    <p-carousel [value]="allOrgs" [numVisible]="3" [numScroll]="1"   [autoplayInterval]="3000" [circular]="true"class="carousel-section">
+        <ng-template let-org pTemplate="org">
+            <div class="organisation-card">
+                <h2 class="organisation-name">
+                    {{org.OrganizationName}}
+                </h2>
+                <div class="organisation-image">
+                    <img src={{org.ImageUrl}} onclick="">
+                </div>
+            </div>     
+        </ng-template>
+        <!-- <div *ngFor="let org of allOrgs" >
+            
+        </div> -->
+        <!-- <div class="organisation-card">
+            <h2 class="organisation-name">
+                IPL
+            </h2>
+            <div class="organisation-image">
+                <img src="">
+            </div>
+        </div>
+        <div class="organisation-card">
+            <h2 class="organisation-name">
+                IPL
+            </h2>
+            <div class="organisation-image">
+                <img src="">
+            </div>
+        </div>
+        <div class="organisation-card">
+            <h2 class="organisation-name">
+                IPL
+            </h2>
+            <div class="organisation-image">
+                <img src="">
+            </div>
+        </div> -->
+    </p-carousel>
 </section>

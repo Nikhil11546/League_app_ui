@@ -1,0 +1,29 @@
+.header-section {
+    display: flex;
+    width: 100%;
+    min-height: 1.5rem;
+    background: rgb(14, 20, 225);
+    align-content: space-between;
+    align-items: center;
+    top: 0;
+    position: sticky;
+}
+
+.logo-section {
+    margin: 0.5rem;
+}
+
+.logo-img {
+    height: 50px
+}
+.search-section {
+    margin: 0.5rem 0.5rem 0.5rem auto;
+    order: 2;
+}
+
+.search-section>input[type=text]
+{
+    padding: 6px;
+    font-size: 17px;
+    border: none;
+}
