@@ -14,6 +14,10 @@ import {ButtonModule} from 'primeng/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { RippleModule } from 'primeng/ripple';
 import {TabViewModule} from 'primeng/tabview';
+import {DialogModule} from 'primeng/dialog';
+import {ReactiveFormsModule} from '@angular/forms';
+
+
 
 
 
@@ -35,7 +39,9 @@ import {TabViewModule} from 'primeng/tabview';
     ButtonModule,
     BrowserAnimationsModule,
     RippleModule,
-    TabViewModule
+    TabViewModule,
+    DialogModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
