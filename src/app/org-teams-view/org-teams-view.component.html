@@ -8,10 +8,22 @@
                 <div class="content-section">
                     <div class="team-details-section">
                         <div class="card-section add-player-section">
-                            Add player
+                            <span>
+                                Add player
+                            </span>
+                            <div>
+                                <button type="button" pButton icon="pi pi-list" label="Show" (click)="openAddPlayerDialog()"></button>
+                            </div>
+
                         </div>
                         <div class="card-section view-players-section">
-                            View all players
+                            <span>
+                                View All Players
+                            </span>
+                            <div>
+                                <button type="button" pButton icon="pi pi-list" label="Show" (click)="navigateToViewAllPlayers()"></button>
+                            </div>
+
                         </div>
                         <div class="card-section budget-section">
                             View budget
@@ -20,6 +32,23 @@
                     </div>
                     <div class="team-statics-section">
                         We are 100 % win
+                    </div>
+                    <div class="team-section">
+                        <div class="graph-section">
+                            graph section
+                        </div>
+                        <div class="details-section">
+                            <p>
+                                <strong>Group Name : </strong> {{teamDetails.GroupName}}
+                            </p>
+                            <p>
+                                <strong>Max group size : </strong> {{teamDetails.MaxGroupSize}}
+                            </p>
+                            <div>
+                                <button type="button" pButton label="Edit" (click)="openEditGroupDetailsPopUp(teamDetails)"></button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </p-tabPanel>
@@ -37,3 +66,22 @@
         </p-tabView>
     </div>
 </section>
+<p-dialog header="Add Player" [(visible)]="isAddTeamModalOpen">
+    Content
+</p-dialog>
+
+<p-dialog header="Edit Group" [(visible)]="isEditGroupModalOpen">
+        <form [formGroup]="groupForm" (submit)="saveGroupDetails()">
+            <div>
+                <label for="group-name">Group Name: </label>
+                <input id="group-name" type="text" formControlName="groupName">
+            </div>
+            <div>
+                <label for="group-size">Max Group size: </label>
+                <input id="group-size" type="number" formControlName="maxGroupSize">
+            </div>
+            <div>
+                <button type="submit" pButton label="Save"></button>
+            </div>
+        </form>
+</p-dialog>

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OrgDetails } from '../models/org-details.model';
 import { TeamDetails } from '../models/team-details.model';
 import { OrganizationDetailsService } from '../services/organization-details.service';
 import {TeamDetailsService} from '../services/team-details.service'
-
+import { FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-org-teams-view',
   templateUrl: './org-teams-view.component.html',
@@ -17,11 +18,16 @@ export class OrgTeamsViewComponent implements OnInit {
   isLoading!: boolean;
   memberDetailsList!: TeamDetails[];
   errorMessage!: string;
-
-
-  constructor(private orgDetailsService: OrganizationDetailsService, private teamDetailsService: TeamDetailsService) { }
+  isAddTeamModalOpen:boolean = false;
+  isEditGroupModalOpen:boolean = false;
+  groupForm!:FormGroup;
+  constructor(private orgDetailsService: OrganizationDetailsService, private teamDetailsService: TeamDetailsService,private router:Router) { }
 
   ngOnInit(): void {
+    this.groupForm = new FormGroup({
+      groupName: new FormControl(''),
+      maxGroupSize: new FormControl(''),
+    });
     this.orgDetailsService.currentOrgDetails.subscribe(
       data => this.myOrganisationdata = data
     )
@@ -52,4 +58,21 @@ export class OrgTeamsViewComponent implements OnInit {
     // }
   }
 
+  openAddPlayerDialog(){
+    this.isAddTeamModalOpen=true;
+  }
+  navigateToViewAllPlayers(){
+    this.router.navigate(["/total-players"])
+  }
+  openEditGroupDetailsPopUp(groupDetails:TeamDetails){
+    this.isEditGroupModalOpen=true;
+    this.groupForm.patchValue({
+      groupName:groupDetails.GroupName,
+      maxGroupSize:groupDetails.MaxGroupSize,
+    });
+  }
+  saveGroupDetails(){
+    let updatedDetails= this.groupForm.value
+    console.log(updatedDetails);
+  }
 }

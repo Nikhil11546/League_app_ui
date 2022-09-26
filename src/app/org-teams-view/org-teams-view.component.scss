@@ -7,6 +7,9 @@
 }
 .team-tab-menu{
     width:95%;
+    // ::ng-deep .p-tabview-panels{
+    //     background: transparent !important;
+    // } 
 }
 
 .content-section {
@@ -18,12 +21,35 @@
     .team-details-section {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         width: 100%;
         height: 40%;
         background-color:transparent;
 
         .card-section {
-            width: 33.33%
+            width: 30%;
+            height: 250px;
+            border: 1px solid #ddd;
+            border-radius: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            span{
+                font-size: 24px;
+                background: transparent;
+                // color: #fff;
+            }
+        }
+    }
+    .team-section{
+        display: flex;
+        .graph-section{
+            width: 30%;
+            margin-right: 20px;
+        }
+        .details-section{
+            flex:1
         }
     }
 }
