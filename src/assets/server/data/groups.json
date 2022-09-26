@@ -1,11 +1,12 @@
 [
   {
     "GroupId": 1,
-    "GroupName": "United Front",
-    "OrganizationName": "Organization One",
+    "GroupName": "IPL",
+    "OrganizationName": "IPL",
     "SponsorName": "Natalie Rachelle",
     "SponsorPhone": "555-000-0000",
     "SponsorEmail": "nat214@gmail.com",
+    "ImageUrl": "../../assets/images/IPL_ICON.png",
     "MaxGroupSize": 7,
     "Members": [
       {
@@ -40,6 +41,7 @@
     "SponsorName": "Brittany Ray",
     "SponsorPhone": "555-000-0004",
     "SponsorEmail": "brit805@aol.com",
+    "ImageUrl": "../../assets/images/IPL_ICON.png",
     "MaxGroupSize": 7,
     "Members": [
       {
@@ -65,6 +67,7 @@
     "SponsorName": "Zachary Westly",
     "SponsorPhone": "555-000-0012",
     "SponsorEmail": "zwest90@gmail.com",
+    "ImageUrl": "../../assets/images/IPL_ICON.png",
     "MaxGroupSize": 7,
     "Members": [
       {
