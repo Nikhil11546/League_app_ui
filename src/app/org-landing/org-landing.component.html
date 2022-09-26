@@ -1,12 +1,34 @@
 <section>
-    <p-carousel [value]="allOrgs" [numVisible]="3" [numScroll]="1"   [autoplayInterval]="3000" [circular]="true"class="carousel-section">
-        <ng-template let-org pTemplate="org">
+    <div class="welcome-section">
+        <div class="register-section">
+            Hi
+        </div>
+        <div class="login-section">
+            <form action="#!" id="main">
+                <h2>Login to your account</h2>
+            
+                <div class="input-parent">
+                  <label for="username">Username or Email</label>
+                  <input type="text" id="username">
+                </div>
+            
+                <div class="input-parent">
+                  <label for="password">Password</label>
+                  <input type="password" id="password">
+                </div>
+            
+                <button type="submit">Login</button>
+              </form>
+        </div>
+    </div>
+    <p-carousel [value]="allOrgs" [numVisible]="3" [numScroll]="1"   [autoplayInterval]="30000" [circular]="true"class="carousel-section">
+        <ng-template let-org pTemplate="org" class="carousel-item">
             <div class="organisation-card">
                 <h2 class="organisation-name">
                     {{org.OrganizationName}}
                 </h2>
                 <div class="organisation-image">
-                    <img src={{org.ImageUrl}} onclick="">
+                    <img src={{org.ImageUrl}} (click)="getTeamsByOrg(org)">
                 </div>
             </div>     
         </ng-template>

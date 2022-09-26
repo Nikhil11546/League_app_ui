@@ -1,0 +1,27 @@
+.org-teams-tab{
+    display:flex;
+}
+
+.team-nav-bar{
+    width:5%
+}
+.team-tab-menu{
+    width:95%;
+}
+
+.content-section {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    position: relative;
+    .team-details-section {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 40%;
+        .card-section {
+            width: 33.33%
+        }
+    }
+}

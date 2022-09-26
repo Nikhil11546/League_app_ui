@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OrgDetails } from '../models/org-details.model';
 import { OrganizationDetailsService } from '../services/organization-details.service';
+
 
 
 @Component({
@@ -14,9 +16,12 @@ export class OrgLandingComponent implements OnInit {
   errorMessage!: string;
   isLoading!: boolean;
   orgDetails!: OrgDetails;
-  activeGoal!: OrgDetails;
 
-  constructor(private orgDetailsService: OrganizationDetailsService) { }
+
+  constructor(private orgDetailsService: OrganizationDetailsService,    private router: Router,
+    ) { 
+  
+  }
 
   ngOnInit(): void {
     this.orgDetailsService.getOrganizations().subscribe(
@@ -35,4 +40,9 @@ export class OrgLandingComponent implements OnInit {
     )
   }
 
+  getTeamsByOrg(org:OrgDetails){
+    this.orgDetailsService.currentOrgDetails.next(org);
+    this.router.navigate(['/orgTeams']);
+
+  }
 }
