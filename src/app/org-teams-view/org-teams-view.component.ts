@@ -16,17 +16,23 @@ export class OrgTeamsViewComponent implements OnInit {
   allTeams!: any;
   myOrganisationdata!: OrgDetails;
   isLoading!: boolean;
-  memberDetailsList!: TeamDetails[];
+  memberDetailsList!: TeamDetails;
   errorMessage!: string;
   isAddTeamModalOpen:boolean = false;
   isEditGroupModalOpen:boolean = false;
+  isDeleteGroupModalOpen:boolean = false;
   groupForm!:FormGroup;
   constructor(private orgDetailsService: OrganizationDetailsService, private teamDetailsService: TeamDetailsService,private router:Router) { }
 
   ngOnInit(): void {
     this.groupForm = new FormGroup({
-      groupName: new FormControl(''),
-      maxGroupSize: new FormControl(''),
+      GroupId: new FormControl(''),
+      GroupName: new FormControl(''),
+      MaxGroupSize: new FormControl(''),
+      SponsorName: new FormControl(''),
+      SponsorEmail: new FormControl(''),
+      OrganizationName:new FormControl(''),
+      SponsorPhone:new FormControl('')
     });
     this.orgDetailsService.currentOrgDetails.subscribe(
       data => this.myOrganisationdata = data
@@ -60,6 +66,10 @@ export class OrgTeamsViewComponent implements OnInit {
 
   openAddPlayerDialog(){
     this.isAddTeamModalOpen=true;
+    this.groupForm.patchValue({
+      OrganizationName: this.myOrganisationdata.OrganizationName 
+    });
+
   }
   navigateToViewAllPlayers(){
     this.router.navigate(["/total-players"])
@@ -67,12 +77,44 @@ export class OrgTeamsViewComponent implements OnInit {
   openEditGroupDetailsPopUp(groupDetails:TeamDetails){
     this.isEditGroupModalOpen=true;
     this.groupForm.patchValue({
-      groupName:groupDetails.GroupName,
-      maxGroupSize:groupDetails.MaxGroupSize,
+      GroupId:groupDetails.GroupId,
+      GroupName:groupDetails.GroupName,
+      MaxGroupSize:groupDetails.MaxGroupSize,
+      SponsorName: groupDetails.SponsorName,
+      SponsorEmail: groupDetails.SponsorEmail,
+      SponsorPhone: groupDetails.SponsorPhone,
+      OrganizationName: this.myOrganisationdata.OrganizationName
     });
   }
+
+  openDeleteGroupDetailsPopUp(groupDetails: TeamDetails){
+    this.isDeleteGroupModalOpen=true;
+    this.groupForm.patchValue({
+      GroupName:groupDetails.GroupName,
+      GroupId:groupDetails.GroupId,
+
+     
+    });
+
+  }
   saveGroupDetails(){
-    let updatedDetails= this.groupForm.value
+    let updatedDetails= this.groupForm.value;
+    this.memberDetailsList = updatedDetails;
+
     console.log(updatedDetails);
+    console.log(this.memberDetailsList);
+
+    if(this.isAddTeamModalOpen){
+      this.teamDetailsService.addGroup(this.memberDetailsList);
+    }
+
+    if(this.isEditGroupModalOpen){
+      this.teamDetailsService.editGroup(this.memberDetailsList);
+    }
+
+    if(this.isDeleteGroupModalOpen){
+      console.log(this.memberDetailsList.GroupId)
+      this.teamDetailsService.DeleteGroup(this.memberDetailsList.GroupId);
+    }
   }
 }

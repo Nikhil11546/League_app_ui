@@ -4,7 +4,8 @@
     </div>
     <div class="team-tab-menu">
         <p-tabView>
-            <p-tabPanel [header]="teamDetails.GroupName" *ngFor="let teamDetails of allTeams; let i = index" [selected]="i == 0">
+            <p-tabPanel [header]="teamDetails.GroupName" *ngFor="let teamDetails of allTeams; let i = index"
+                [selected]="i == 0">
                 <div class="content-section">
                     <div class="team-details-section">
                         <div class="card-section add-player-section">
@@ -12,7 +13,9 @@
                                 Add player
                             </span>
                             <div>
-                                <button type="button" pButton icon="pi pi-list" label="Show" (click)="openAddPlayerDialog()"></button>
+                                <button type="button" pButton icon="pi " label="Add Player"
+                                    (click)="openAddPlayerDialog()"></button>
+                                <!-- disabled -->
                             </div>
 
                         </div>
@@ -21,14 +24,20 @@
                                 View All Players
                             </span>
                             <div>
-                                <button type="button" pButton icon="pi pi-list" label="Show" (click)="navigateToViewAllPlayers()"></button>
+                                <button type="button" pButton icon="pi" label="Players List"
+                                    (click)="navigateToViewAllPlayers()"></button>
                             </div>
 
                         </div>
                         <div class="card-section budget-section">
-                            View budget
+                            <span>
+                                View budget
+                            </span>
+                            <div>
+                                <button type="button" pButton icon="pi" label="Budget" disabled></button>
+                            </div>
                         </div>
-                
+
                     </div>
                     <div class="team-statics-section">
                         We are 100 % win
@@ -39,21 +48,43 @@
                         </div>
                         <div class="details-section">
                             <p>
-                                <strong>Group Name : </strong> {{teamDetails.GroupName}}
+                                <strong>Team Id : </strong> {{teamDetails.GroupId}}
                             </p>
                             <p>
-                                <strong>Max group size : </strong> {{teamDetails.MaxGroupSize}}
+                                <strong>Team Name : </strong> {{teamDetails.GroupName}}
                             </p>
-                            <div>
-                                <button type="button" pButton label="Edit" (click)="openEditGroupDetailsPopUp(teamDetails)"></button>
+                            <p>
+                                <strong>Max Team size : </strong> {{teamDetails.MaxGroupSize}}
+                            </p>
+                            <p>
+                                <strong>Owner Name : </strong> {{teamDetails.SponsorName}}
+                            </p>
+                            <p>
+                                <strong>Contact Email : </strong> {{teamDetails.SponsorEmail}}
+                            </p>
+                            <p>
+                                <strong>Contact Phone : </strong> {{teamDetails.SponsorPhone}}
+                            </p>
+                            <p>
+                                <strong>Team Size : </strong> {{teamDetails.MaxGroupSize}}
+                            </p>
+                            <div class="button-section">
+                                <div>
+                                    <button type="button" pButton label="Edit" icon="pi pi-user-edit"
+                                        (click)="openEditGroupDetailsPopUp(teamDetails)"></button>
+                                </div>
+                                <div>
+                                    <button type="button" pButton label="Delete" icon="pi pi-trash"
+                                        class="p-button-danger"
+                                        (click)="openDeleteGroupDetailsPopUp(teamDetails)"></button>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </p-tabPanel>
         </p-tabView>
-        <p-tabView [scrollable]="true">
+        <!-- <p-tabView [scrollable]="true">
             <p-tabPanel header="Header 1">
               
             </p-tabPanel>
@@ -62,26 +93,89 @@
             </p-tabPanel>
             <p-tabPanel header="Header 3">
                 Content 3
-            </p-tabPanel>
-        </p-tabView>
+            </p-tabPanel> 
+        </p-tabView> -->
     </div>
 </section>
 <p-dialog header="Add Player" [(visible)]="isAddTeamModalOpen">
-    Content
+    <form [formGroup]="groupForm" (submit)="saveGroupDetails()">
+        <div>
+            <label for="group-name">Group Name: </label>
+            <input id="group-name" type="text" formControlName="GroupName">
+        </div>
+        <div>
+            <label for="org-name">Organization Name: </label>
+            <input id="org-name" type="text" formControlName="OrganizationName" readonly>
+        </div>
+        <div>
+            <label for="group-size">Max Group size: </label>
+            <input id="group-size" type="number" formControlName="MaxGroupSize">
+        </div>
+        <div>
+            <label for="owner-name">Owner Name: </label>
+            <input id="owner-name" type="text" formControlName="SponsorName">
+        </div>
+        <div>
+            <label for="contact-email">Contact Email: </label>
+            <input id="contact-email" type="text" formControlName="SponsorEmail">
+        </div>
+        <div>
+            <label for="contact-phone">Contact Phone: </label>
+            <input id="contact-phone" type="text" formControlName="SponsorPhone">
+        </div>
+        <div>
+            <button type="submit" pButton label="Save"></button>
+        </div>
+
+    </form>
+</p-dialog>
+
+<p-dialog header="Delete Group" [(visible)]="isDeleteGroupModalOpen">
+    <form [formGroup]="groupForm" (submit)="saveGroupDetails()">
+        <!-- <div>
+            <label for="group-id" >Group Id: </label>
+            <input id="group-id" type="text" formControlName="GroupId" >
+        </div> -->
+        <span>
+            Do you want to Delete Group
+        </span>
+            <label for="group-name">Group Name: </label>
+            <input id="group-name" type="text" formControlName="GroupName">
+        <div>
+            <button  pButton label="Delete" icon="pi pi-trash"
+            class="p-button-danger" type="submit"></button>
+        </div>
+    </form>
 </p-dialog>
 
 <p-dialog header="Edit Group" [(visible)]="isEditGroupModalOpen">
-        <form [formGroup]="groupForm" (submit)="saveGroupDetails()">
-            <div>
-                <label for="group-name">Group Name: </label>
-                <input id="group-name" type="text" formControlName="groupName">
-            </div>
-            <div>
-                <label for="group-size">Max Group size: </label>
-                <input id="group-size" type="number" formControlName="maxGroupSize">
-            </div>
-            <div>
-                <button type="submit" pButton label="Save"></button>
-            </div>
-        </form>
+    <form [formGroup]="groupForm" (submit)="saveGroupDetails()">
+        <!-- <div>
+            <label for="group-id" >Group Id: </label>
+            <input id="group-id" type="text" formControlName="GroupId" >
+        </div> -->
+        <div>
+            <label for="group-name">Group Name: </label>
+            <input id="group-name" type="text" formControlName="GroupName">
+        </div>
+        <div>
+            <label for="group-size">Max Group size: </label>
+            <input id="group-size" type="number" formControlName="MaxGroupSize">
+        </div>
+        <div>
+            <label for="owner-name">Owner Name: </label>
+            <input id="owner-name" type="text" formControlName="SponsorName">
+        </div>
+        <div>
+            <label for="contact-email">Contact Email: </label>
+            <input id="contact-email" type="text" formControlName="SponsorEmail">
+        </div>
+        <div>
+            <label for="contact-phone">Contact Phone: </label>
+            <input id="contact-phone" type="text" formControlName="SponsorPhone">
+        </div>
+        <div>
+            <button type="submit" pButton label="Save"></button>
+        </div>
+    </form>
 </p-dialog>

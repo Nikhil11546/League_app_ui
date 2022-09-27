@@ -10,7 +10,9 @@ import { TeamDetails } from '../models/team-details.model';
 export class TeamDetailsService {
 
 
+
   getTeamsByOrgURL= "http://127.0.0.1:8082/api/groups/byorganization/";
+  addGroupsURL= "http://127.0.0.1:8082/api/groups/";
   constructor(private httpClient : HttpClient) { }
 
   getTeamsByGroupId(id: number): Observable<TeamDetails[]> {
@@ -19,6 +21,19 @@ export class TeamDetailsService {
     return results;
   }
 
+
+  addGroup(groupDetails: TeamDetails): void{
+    this.httpClient.post<TeamDetails>(`http://127.0.0.1:8082/api/groups/`, groupDetails).subscribe();
+  }
+
+  editGroup(groupDetails: TeamDetails): void{
+    this.httpClient.put<TeamDetails>(`http://127.0.0.1:8082/api/groups/`, groupDetails).subscribe();
+  }
+
+  DeleteGroup(id: Number): void{
+    console.log(id);
+    this.httpClient.delete<TeamDetails>(this.addGroupsURL + id).subscribe();
+  }
   // getAllTeams()
   // {
     
