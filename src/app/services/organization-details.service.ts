@@ -10,8 +10,8 @@ import { Observable,BehaviorSubject } from 'rxjs';
 export class OrganizationDetailsService {
 
 
-  orgDetails!:OrgDetails;
-  currentOrgDetails: BehaviorSubject<OrgDetails> = new BehaviorSubject(this.orgDetails);
+  // orgDetails!:OrgDetails;
+  // currentOrgDetails: BehaviorSubject<OrgDetails> = new BehaviorSubject(this.orgDetails);
 
   getOrganizationUrl = 'http://localhost:8082/api/organizations';
 

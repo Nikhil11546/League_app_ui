@@ -13,11 +13,15 @@ export class TeamDetailsService {
 
   apiURL= "http://127.0.0.1:8082/api/";
   getTeamsByOrgURL= "http://127.0.0.1:8082/api/groups/byorganization/";
+  teamDetails!:TeamDetails;
+  currentTeamDetails: BehaviorSubject<TeamDetails> = new BehaviorSubject(this.teamDetails);
+
+
   // addGroupsURL= "http://127.0.0.1:8082/api/groups/";
   constructor(private httpClient : HttpClient) { }
 
   getTeamsByGroupId(id: number): Observable<TeamDetails[]> {
-    const results: Observable<TeamDetails[]> = this.httpClient.get<TeamDetails[]>(this.apiURL + "groups/byorganization" + id);
+    const results: Observable<TeamDetails[]> = this.httpClient.get<TeamDetails[]>(this.apiURL + "groups/byorganization/" + id);
     console.log(`getOrganizations() returned ${results}`);
     return results;
   }
@@ -35,7 +39,7 @@ export class TeamDetailsService {
     return this.httpClient.put<TeamDetails>(this.apiURL + "groups/", groupDetails);
   }
 
-  DeleteGroup(id: Number): void{
+  DeleteGroup(id: number): void{
     console.log(id);
     this.httpClient.delete<TeamDetails>(this.apiURL + "groups/" + id).subscribe();
   }

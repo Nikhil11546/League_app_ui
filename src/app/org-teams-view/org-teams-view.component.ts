@@ -101,8 +101,9 @@ export class OrgTeamsViewComponent implements OnInit {
     });
 
   }
-  navigateToViewAllPlayers(groupId:string){
-    this.router.navigate(["/orgTeams",this.organizationId,"total-players",groupId])
+  navigateToViewAllPlayers(teamDetails:TeamDetails){
+    this.teamDetailsService.currentTeamDetails.next(teamDetails);
+    this.router.navigate(["/orgTeams",this.organizationId,"total-players",teamDetails.GroupId]);
   }
   openEditGroupDetailsPopUp(groupDetails:TeamDetails){
     this.isEditGroupModalOpen=true;
