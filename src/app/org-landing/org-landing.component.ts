@@ -41,8 +41,8 @@ export class OrgLandingComponent implements OnInit {
   }
 
   getTeamsByOrg(org:OrgDetails){
-    this.orgDetailsService.currentOrgDetails.next(org);
-    this.router.navigate(['/orgTeams']);
+    // this.orgDetailsService.currentOrgDetails.next(org);
+    this.router.navigate(['/orgTeams',org.OrganizationId]);
 
   }
 }

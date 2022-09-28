@@ -16,7 +16,8 @@ import { RippleModule } from 'primeng/ripple';
 import {TabViewModule} from 'primeng/tabview';
 import {DialogModule} from 'primeng/dialog';
 import {ReactiveFormsModule} from '@angular/forms';
-
+import { TeamPlayersComponent } from './team-players/team-players.component';
+import { InputTextModule } from "primeng/inputtext";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     FooterComponent,
     OrgLandingComponent,
     OrgTeamsViewComponent,
-    NavBarComponent
+    NavBarComponent,
+    TeamPlayersComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     RippleModule,
     TabViewModule,
     DialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]

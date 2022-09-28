@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule, Routes } from '@angular/router';
 import { OrgLandingComponent } from './org-landing/org-landing.component';
 import { OrgTeamsViewComponent } from './org-teams-view/org-teams-view.component';
+import { TeamPlayersComponent } from './team-players/team-players.component';
 
 const fallbackRoute: Route = {path: '**', component: OrgLandingComponent}
 
@@ -24,7 +25,26 @@ const routes: Routes = [
       },
       {
         path: 'orgTeams',
-        component: OrgTeamsViewComponent,
+        children:[
+          {
+            path:":orgId",
+            children:[
+              {
+                path:"",
+                component: OrgTeamsViewComponent,
+              },
+              {
+                path:"total-players",
+                children:[
+                  {
+                    path:":teamPlayerId",
+                    component: TeamPlayersComponent,
+                  }
+                ]
+              }
+            ]
+          }
+        ]
         // canActivate: [RegisterGuardService],
       },
       // {

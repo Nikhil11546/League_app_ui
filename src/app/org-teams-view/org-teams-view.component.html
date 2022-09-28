@@ -13,11 +13,11 @@
                                 Add player
                             </span>
                             <div>
-                                <button type="button" pButton icon="pi " label="Add Player"
+                                <button [disabled]="myOrganisationdata?.MaxGroupSize && myOrganisationdata?.Members && (myOrganisationdata?.MaxGroupSize==myOrganisationdata?.Members?.length)" type="button" pButton icon="pi " label="Add Player"
                                     (click)="openAddPlayerDialog()"></button>
                                 <!-- disabled -->
                             </div>
-
+                
                         </div>
                         <div class="card-section view-players-section">
                             <span>
@@ -25,9 +25,9 @@
                             </span>
                             <div>
                                 <button type="button" pButton icon="pi" label="Players List"
-                                    (click)="navigateToViewAllPlayers()"></button>
+                                    (click)="navigateToViewAllPlayers(teamDetails.GroupId)"></button>
                             </div>
-
+                
                         </div>
                         <div class="card-section budget-section">
                             <span>
@@ -37,7 +37,6 @@
                                 <button type="button" pButton icon="pi" label="Budget" disabled></button>
                             </div>
                         </div>
-
                     </div>
                     <div class="team-statics-section">
                         We are 100 % win
@@ -83,7 +82,21 @@
                     </div>
                 </div>
             </p-tabPanel>
+
         </p-tabView>
+        <div *ngIf="allTeams.length==0">
+            <div class="card-section add-player-section">
+                <span>
+                    Add player
+                </span>
+                <div>
+                    <button [disabled]="myOrganisationdata?.MaxGroupSize && myOrganisationdata?.Members && (myOrganisationdata?.MaxGroupSize==myOrganisationdata?.Members?.length)" type="button" pButton icon="pi " label="Add Player"
+                        (click)="openAddPlayerDialog()"></button>
+                    <!-- disabled -->
+                </div>
+    
+            </div>
+        </div>
         <!-- <p-tabView [scrollable]="true">
             <p-tabPanel header="Header 1">
               
@@ -102,6 +115,9 @@
         <div>
             <label for="group-name">Group Name: </label>
             <input id="group-name" type="text" formControlName="GroupName">
+        </div>
+        <div class="error" *ngIf="(groupForm.get('GroupName')?.invalid && (groupForm.get('GroupName')?.dirty || groupForm.get('GroupName')?.touched)) &&  groupForm.get('GroupName')?.hasError('required')">
+            Please enter group name
         </div>
         <div>
             <label for="org-name">Organization Name: </label>
@@ -131,7 +147,7 @@
 </p-dialog>
 
 <p-dialog header="Delete Group" [(visible)]="isDeleteGroupModalOpen">
-    <form [formGroup]="groupForm" (submit)="saveGroupDetails()">
+    <form [formGroup]="groupForm" (submit)="deleteGroup()">
         <!-- <div>
             <label for="group-id" >Group Id: </label>
             <input id="group-id" type="text" formControlName="GroupId" >
@@ -154,6 +170,7 @@
             <label for="group-id" >Group Id: </label>
             <input id="group-id" type="text" formControlName="GroupId" >
         </div> -->
+        
         <div>
             <label for="group-name">Group Name: </label>
             <input id="group-name" type="text" formControlName="GroupName">
