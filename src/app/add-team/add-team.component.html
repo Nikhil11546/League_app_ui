@@ -1,38 +1,75 @@
 
 <p-dialog header="Add Player" [(visible)]="isAddTeamModalOpen" (onHide)="hideAddTeamDialog()">
     <form [formGroup]="teamMemberForm" (submit)="saveMemberDetails()">
-        <div>
-            <label for="group-name">Player Name: </label>
-            <input id="group-name" type="text" formControlName="MemberName">
+
+        <div class="grid p-fluid">
+            <div class="col-12 md:col-4">
+                <label for="player-name">Name:</label>
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input type="text" id="player-name" class="p-inputtext-sm" pInputText placeholder="Player Name" formControlName="MemberName">
+                </div>
+            </div>
         </div>
         <div class="error"
             *ngIf="(teamMemberForm.get('MemberName')?.invalid && (teamMemberForm.get('MemberName')?.dirty || teamMemberForm.get('MemberName')?.touched)) &&  teamMemberForm.get('MemberName')?.hasError('required')">
-            Please enter group name
+            Please enter valid name
         </div>
+        <div class="grid p-fluid">
+            <div class="col-12 md:col-4">
+                <label for="contact-email">Email:</label>
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input type="email" id="contact-email" class="p-inputtext-sm" pInputText placeholder="Player Email" formControlName="MemberEmail">
+                </div>
+            </div>
+        </div>
+        <div class="error"
+            *ngIf="(teamMemberForm.get('MemberEmail')?.invalid && (teamMemberForm.get('MemberEmail')?.dirty || teamMemberForm.get('MemberEmail')?.touched)) &&  teamMemberForm.get('MemberEmail')?.hasError('required')">
+            Please enter valid email
+        </div>
+  
         <!-- <div>
-            <label for="org-name">Organization Name: </label>
-            <input id="org-name" type="text" formControlName="OrganizationName" readonly>
-        </div> -->
-        <!-- <div>
-            <label for="group-size">Max Group size: </label>
-            <input id="group-size" type="number" formControlName="MaxGroupSize">
-        </div> -->
-        <!-- <div>
-            <label for="owner-name">Owner Name: </label>
-            <input id="owner-name" type="text" formControlName="SponsorName">
-        </div> -->
-        <div>
             <label for="contact-email">Player Email: </label>
             <input id="contact-email" type="email" formControlName="MemberEmail">
+        </div> -->
+
+        <div class="grid p-fluid">
+            <div class="col-12 md:col-4">
+                <label for="contact-phone">Mobile:</label>
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input type="email" id="contact-phone" class="p-inputtext-sm" pInputText placeholder="Phone Number" formControlName="MemberPhone">
+                </div>
+            </div>
         </div>
-        <div>
+        <div class="error"
+            *ngIf="(teamMemberForm.get('MemberPhone')?.invalid && (teamMemberForm.get('MemberPhone')?.dirty || teamMemberForm.get('MemberPhone')?.touched)) &&  teamMemberForm.get('MemberPhone')?.hasError('required')">
+            Please enter valid phone number
+        </div>
+        <!-- <div>
             <label for="contact-phone">Player Phone: </label>
             <input id="contact-phone" type="text" formControlName="MemberPhone">
+        </div> -->
+
+        
+        <div class="grid p-fluid">
+            <div class="col-12 md:col-4">
+                <label for="player-age">Age:</label>
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input type="number" id="player-age" class="p-inputtext-sm" pInputText placeholder="Age" formControlName="age">
+                </div>
+            </div>
         </div>
-        <div>
+        <div class="error"
+            *ngIf="(teamMemberForm.get('age')?.invalid && (teamMemberForm.get('age')?.dirty || teamMemberForm.get('age')?.touched)) &&  teamMemberForm.get('age')?.hasError('required')">
+            Please enter valid age
+        </div>
+        <!-- <div>
             <label for="contact-phone">Age: </label>
             <input id="contact-phone" type="text" formControlName="age">
-        </div>
+        </div> -->
         <div>
             <button type="submit" pButton label="Save"></button>
         </div>

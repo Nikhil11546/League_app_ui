@@ -19,12 +19,16 @@ section {
     height: 40%;
 
     .register-section {
-        border: 1px solid black;
-        width: 50%;
-    };
+        // border: 1px solid black;
+        width: 70%;
+    }
+
+    ;
 
     .login-section {
+        display: flex;
         width: 50%;
+
         *,
         *:before,
         *:after {
@@ -121,7 +125,11 @@ section {
 
 img {
     width: 250px;
+    height: 250px;
     object-fit: cover;
+    align-self: center;
+    border: 1px solid #ddd;
+    border-radius: 22px;
 }
 
 .organisation-card {
@@ -155,6 +163,7 @@ p-carousel {
 
         .p-carousel-item {
             width: 25%;
+            align-content: center;
         }
     }
 }

@@ -144,34 +144,30 @@
             </span> -->
             <div class="grid p-fluid">
                 <div class="col-12 md:col-4">
-                    <label>Team Name</label>
+                    <label>Team Name:</label>
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
                         <input type="text" id="group-name" class="p-inputtext-sm" pInputText placeholder="Team Name" formControlName="GroupName">
                     </div>
                 </div>
             </div>
-            <!-- <div>
-                <label for="group-name">Group Name: </label>
-                <input id="group-name" type="text" formControlName="GroupName">
-            </div> -->
             <div class="error"
                 *ngIf="(groupForm.get('GroupName')?.invalid && (groupForm.get('GroupName')?.dirty || groupForm.get('GroupName')?.touched)) &&  groupForm.get('GroupName')?.hasError('required')">
-                Please enter team name
+                Please enter valid team name
             </div>
             <div class="grid p-fluid">
                 <div class="col-12 md:col-4">
-                    <label>Organization Name</label>
+                    <label>Organization Name:</label>
     
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                        <input type="text" id="org-name" class="p-inputtext-sm" pInputText placeholder="Organization Name" formControlName="OrganizationName" readonly>
+                        <input type="text" id="org-name" class="p-inputtext-sm" pInputText placeholder="Organization Name" formControlName="OrganizationName" readonly  >
                     </div>
                 </div>
             </div>
             <div class="error"
                 *ngIf="(groupForm.get('OrganizationName')?.invalid && (groupForm.get('OrganizationName')?.dirty || groupForm.get('OrganizationName')?.touched)) &&  groupForm.get('OrganizationName')?.hasError('required')">
-                Please enter organization name
+                Please enter valid organization name
             </div>
             <!-- <div>
                 <label for="org-name">Organization Name: </label>
@@ -179,33 +175,74 @@
             </div> -->
             <div class="grid p-fluid">
                 <div class="col-12 md:col-4">
+                    <label>Team Size:</label>
+
                     <div class="p-inputgroup">
                         <!-- <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span> -->
-                        <p-inputNumber class="p-inputtext-sm" [showButtons]="true"  formControlName="MaxGroupSize" [min]="1" [max]="12"></p-inputNumber>
+                        <p-inputNumber class="p-inputtext-sm" [showButtons]="true"  formControlName="MaxGroupSize" [min]="1" [max]="20"></p-inputNumber>
                         <!-- <input type="text" id="org-name" class="p-inputtext-sm" pInputText placeholder="Organization Name" formControlName="OrganizationName" readonly> -->
                     </div>
                 </div>
             </div>
             <div class="error"
-                *ngIf="(groupForm.get('MaxGroupSize')?.invalid && (groupForm.get('MaxGroupSize')?.dirty || groupForm.get('MaxGroupSize')?.touched)) &&  groupForm.get('MaxGroupSize')?.hasError('required')">
+                *ngIf="(groupForm.get('MaxGroupSize')?.invalid && (groupForm.get('MaxGroupSize')?.dirty || groupForm.get('MaxGroupSize')?.touched)) && groupForm.get('MaxGroupSize')?.value >20 &&  groupForm.get('MaxGroupSize')?.hasError('required')">
                 Please select valid group size
             </div>
+            
+            <div class="grid p-fluid">
+                <div class="col-12 md:col-4">
+                    <label>Owner Name:</label>
+    
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                        <input type="text" id="owner-name" class="p-inputtext-sm" pInputText placeholder="Owner Name" formControlName="SponsorName" >
+                    </div>
+                </div>
+            </div>
+            <div class="error"
+                *ngIf="(groupForm.get('SponsorName')?.invalid && (groupForm.get('SponsorName')?.dirty || groupForm.get('SponsorName')?.touched)) &&  groupForm.get('SponsorName')?.hasError('required')">
+                Please enter valid owner name
+            </div>
             <!-- <div>
-                <label for="group-size">Max Group size: </label>
-                <input id="group-size" type="number" formControlName="MaxGroupSize">
-            </div> -->
-            <div>
                 <label for="owner-name">Owner Name: </label>
                 <input id="owner-name" type="text" formControlName="SponsorName">
+            </div> -->
+
+            <div class="grid p-fluid">
+                <div class="col-12 md:col-4">
+                    <label  for="contact-email">Contact Email:</label>
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                        <input type="email" id="contact-email" class="p-inputtext-sm" pInputText placeholder="Contact Email" formControlName="SponsorEmail">
+                    </div>
+                </div>
             </div>
-            <div>
+            <div class="error"
+                *ngIf="(groupForm.get('SponsorEmail')?.invalid && (groupForm.get('SponsorEmail')?.dirty || groupForm.get('SponsorEmail')?.touched)) &&  groupForm.get('SponsorEmail')?.hasError('required')">
+                Please enter valid email
+            </div>
+            <!-- <div>
                 <label for="contact-email">Contact Email: </label>
                 <input id="contact-email" type="email" formControlName="SponsorEmail">
+            </div> -->
+
+            <div class="grid p-fluid">
+                <div class="col-12 md:col-4">
+                    <label for="contact-phone">Contact Phone: </label>
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                        <input tyid="contact-phone" type="tel" class="p-inputtext-sm" pInputText placeholder="Phone Number" formControlName="SponsorPhone">
+                    </div>
+                </div>
             </div>
-            <div>
+            <div class="error"
+                *ngIf="(groupForm.get('SponsorPhone')?.invalid && (groupForm.get('SponsorPhone')?.dirty || groupForm.get('SponsorPhone')?.touched)) &&  groupForm.get('SponsorPhone')?.hasError('required')">
+                Please enter valid phone number
+            </div>
+            <!-- <div>
                 <label for="contact-phone">Contact Phone: </label>
                 <input id="contact-phone" type="tel" formControlName="SponsorPhone">
-            </div>
+            </div> -->
             <div>
                 <button type="submit" pButton label="Save"></button>
             </div>
