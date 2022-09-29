@@ -40,9 +40,9 @@ export class TeamDetailsService {
     return this.httpClient.put<TeamDetails>(this.apiURL + "groups/", groupDetails);
   }
 
-  DeleteGroup(id: number): void{
+  DeleteGroup(id: number){
     console.log(id);
-    this.httpClient.delete<TeamDetails>(this.apiURL + "groups/" + id).subscribe();
+    return this.httpClient.delete<TeamDetails>(this.apiURL + "groups/" + id);
   }
   // getAllTeams()
   // {

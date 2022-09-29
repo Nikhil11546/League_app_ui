@@ -2,7 +2,7 @@
     <div class="add-team-container">
         <button [disabled]="myOrganisationdata?.MaxGroupSize && myOrganisationdata?.Members && (myOrganisationdata?.MaxGroupSize==myOrganisationdata?.Members?.length)"
         type="button" pButton label="Add Team"
-        (click)="openAddPlayerDialog()"></button>
+        (click)="openAddGroupDetailsPopUp()"></button>
     </div>
     <div class="team-tab-menu">
         <p-tabView (onChange)="getWinRatio(($event))" [activeIndex]="selectedIndex">
