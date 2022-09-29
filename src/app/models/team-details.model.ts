@@ -10,6 +10,7 @@ export class TeamDetails {
     SponsorEmail!:string;
     ImageUrl!: string;
     MaxGroupSize!: number;
+    WinsRatio!: number;
     Members!: MemberDetails[]; 
 }
 

@@ -14,15 +14,19 @@ export class OrgTeamsViewComponent implements OnInit {
   
 
   allTeams!: any;
+  data!: any;
   myOrganisationdata!: TeamDetails;
   organizationId!: number;
   isLoading!: boolean;
+  chartOptions: any;
   memberDetailsList!: TeamDetails;
   errorMessage!: string;
   isAddTeamModalOpen:boolean = false;
   isEditGroupModalOpen:boolean = false;
   isDeleteGroupModalOpen:boolean = false;
   groupForm!:FormGroup;
+  selectedIndex:number=0;
+
   constructor(private orgDetailsService: OrganizationDetailsService, private teamDetailsService: TeamDetailsService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -33,11 +37,29 @@ export class OrgTeamsViewComponent implements OnInit {
       SponsorName: new FormControl(''),
       SponsorEmail: new FormControl('',[Validators.required,Validators.email]),
       OrganizationName:new FormControl(''),
-      SponsorPhone:new FormControl('')
+      SponsorPhone:new FormControl(''),
+      WinsRatio:new FormControl('')
     });
     // this.orgDetailsService.currentOrgDetails.subscribe(
     //   data => this.myOrganisationdata = data
     // )
+    this.chartOptions=this.getDarkTheme();
+  //   this.data = {
+  //     labels: ['Win Percentage', 'Lose Percentage'],
+  //     datasets: [
+  //         {
+  //             data: [70, 100 - 70],
+  //             backgroundColor: [
+  //                 "#42A5F5",
+  //                 "#66BB6A",
+  //             ],
+  //             hoverBackgroundColor: [
+  //                 "#64B5F6",
+  //                 "#81C784",
+  //             ]
+  //         }
+  //     ]
+  // }
     console.log(':::orgDetails', this.myOrganisationdata);
     this.route.params.subscribe(params=>{
       this.organizationId = params["orgId"];
@@ -61,6 +83,9 @@ export class OrgTeamsViewComponent implements OnInit {
       {
         next: (res: any) => {
           this.allTeams = res;
+          if(this.allTeams.length>0){
+            this.getWinRatio({index:0});
+          }
           console.log(this.allTeams);
           this.isLoading = false;
         },
@@ -96,6 +121,7 @@ export class OrgTeamsViewComponent implements OnInit {
       MaxGroupSize: '',
       SponsorName: '',
       SponsorEmail: '',
+      WinsRatio: 0,
       OrganizationName: this.myOrganisationdata.OrganizationName,
       SponsorPhone:''
     });
@@ -155,4 +181,38 @@ export class OrgTeamsViewComponent implements OnInit {
       console.log(this.memberDetailsList.GroupId)
       this.teamDetailsService.DeleteGroup(this.memberDetailsList.GroupId);
   }
+
+  getDarkTheme() {
+    return {
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#ebedef'
+                }
+            }
+        }
+    }
+}
+  getWinRatio(event: any): void{
+    this.selectedIndex=event.index;
+    let winRatio= this.allTeams[this.selectedIndex].WinsRatio
+    console.log("Winratio:::"+winRatio);
+
+    this.data={
+    labels: ['Win Percentage','Lose Percentage'],
+    datasets: [
+      {
+     data:[winRatio, 100-winRatio],
+     backgroundColor: [
+      "#42A5F5",
+      "#66BB6A",
+  ],
+  hoverBackgroundColor: [
+      "#64B5F6",
+      "#81C784",
+  ]
+    } 
+    ]
+  }
+}
 }

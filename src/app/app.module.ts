@@ -18,6 +18,11 @@ import {DialogModule} from 'primeng/dialog';
 import {ReactiveFormsModule} from '@angular/forms';
 import { TeamPlayersComponent } from './team-players/team-players.component';
 import { InputTextModule } from "primeng/inputtext";
+import {ChartModule} from 'primeng/chart';
+import {InputNumberModule} from 'primeng/inputnumber';
+
+
+
 
 
 @NgModule({
@@ -41,7 +46,9 @@ import { InputTextModule } from "primeng/inputtext";
     TabViewModule,
     DialogModule,
     ReactiveFormsModule,
-    InputTextModule
+    InputTextModule,
+    ChartModule,
+    InputNumberModule
   ],
   providers: [],
   bootstrap: [AppComponent]
