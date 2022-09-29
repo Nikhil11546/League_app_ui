@@ -4,64 +4,44 @@
     </div>
     <div class="team-tab-menu">
         <p-tabView>
-            <p-tabPanel [header]="memberDetails.MemberName" *ngFor="let memberDetails of teamDetails.Members; let i = index"
-                [selected]="i == 0">
+            <p-tabPanel [header]="memberDetails.MemberName"
+                *ngFor="let memberDetails of teamDetails.Members; let i = index" [selected]="i == 0">
                 <div class="content-section">
                     <div class="team-details-section">
-                        <div class="card-section add-player-section">
-                            <span>
-                                Add player
-                            </span>
-                            <div>
-                                <button [disabled]="teamDetails?.MaxGroupSize && teamDetails?.Members && (teamDetails?.MaxGroupSize==teamDetails?.Members?.length)" type="button" pButton icon="pi " label="Add Player"
-                                    (click)="openAddPlayerDialog()"></button>
-                                <!-- disabled -->
-                            </div>
-                
+
+                        <div class="img-section view-players-section">
+
+                            <p-image src="../../assets/images/kohli1-1.jpg" alt="Image" width="250">
+                                <ng-template pTemplate="indicator">
+                                    Indicator Content
+                                </ng-template>
+                            </p-image>
+
+
                         </div>
-                        <div class="card-section view-players-section">
-                            <span>
-                                View All Players
-                            </span>
-                            <div>
-                                <button type="button" pButton icon="pi" label="Players List"
-                                    (click)="openAddPlayerDialog()"></button>
-                            </div>
-                
-                        </div>
-                        <div class="card-section budget-section">
-                            <span>
-                                View budget
-                            </span>
-                            <div>
-                                <button type="button" pButton icon="pi" label="Budget" disabled></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-statics-section">
-                        We are 100 % win
-                    </div>
-                    <div class="team-section">
-                        <div class="graph-section">
-                            graph section
-                        </div>
+                        <!-- <div class=" details-section">
+                           
+                            <div> -->
                         <div class="details-section">
                             <p>
-                                <strong>Player Id : </strong> {{memberDetails.MemberId}}
+                                Player Details
                             </p>
                             <p>
+                                <strong>Player Id : </strong> {{memberDetails.MemberId}}
+                                <!-- </p>
+                                    <p> -->
                                 <strong>Player Name : </strong> {{memberDetails.MemberName}}
                             </p>
                             <!-- <p>
-                                <strong>Max Team size : </strong> {{memberDetails.Me}}
-                            </p> -->
+                                    <strong>Max Team size : </strong> {{memberDetails.Me}}
+                                </p> -->
                             <!-- <p>
-                                <strong>Owner Name : </strong> {{teamDetails.SponsorName}}
-                            </p> -->
+                                    <strong>Owner Name : </strong> {{teamDetails.SponsorName}}
+                                </p> -->
                             <p>
                                 <strong>Player Email : </strong> {{memberDetails.MemberEmail}}
-                            </p>
-                            <p>
+                                <!-- </p>
+                                    <p> -->
                                 <strong>Player Phone : </strong> {{memberDetails.MemberPhone}}
                             </p>
                             <p>
@@ -79,25 +59,77 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </p-tabPanel>
-
-        </p-tabView>
-        <div *ngIf="teamDetails?.Members?.length==0">
-            <div class="card-section add-player-section">
-                <span>
-                    Add player
-                </span>
-                <div>
-                    <button [disabled]="teamDetails?.MaxGroupSize && teamDetails?.Members && (teamDetails?.MaxGroupSize==teamDetails?.Members?.length)" type="button" pButton icon="pi " label="Add Player"
-                        (click)="openAddPlayerDialog()"></button>
-                    <!-- disabled -->
-                </div>
-    
-            </div>
+                    <!-- </div>
+                </div> -->
+                <!-- <div class="card-section add-player-section">
+                            <div>
+                                <button [disabled]="teamDetails?.MaxGroupSize && teamDetails?.Members && (teamDetails?.MaxGroupSize==teamDetails?.Members?.length)" type="button" pButton icon="pi " label="Add Player"
+                                    (click)="openAddPlayerDialog()"></button>
+                            </div>
+                
+                        </div> -->
+    </div>
+    <div class="team-statics-section">
+        We are 100 % win
+    </div>
+    <div class="team-section">
+        <div class="graph-section">
+            graph section
         </div>
-        <!-- <p-tabView [scrollable]="true">
+        <div class="details-section">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil fuga quis officiis quae accusantium voluptatum tempore iure odio labore quos cupiditate saepe id, dolore repellat fugit molestias fugiat libero molestiae.</p>
+            <!-- <p>
+                <strong>Player Id : </strong> {{memberDetails.MemberId}}
+            </p>
+            <p>
+                <strong>Player Name : </strong> {{memberDetails.MemberName}}
+            </p> -->
+            <!-- <p>
+                                <strong>Max Team size : </strong> {{memberDetails.Me}}
+                            </p> -->
+            <!-- <p>
+                                <strong>Owner Name : </strong> {{teamDetails.SponsorName}}
+                            </p> -->
+            <!-- <p>
+                <strong>Player Email : </strong> {{memberDetails.MemberEmail}}
+            </p>
+            <p>
+                <strong>Player Phone : </strong> {{memberDetails.MemberPhone}}
+            </p>
+            <p>
+                <strong>Age : </strong> {{memberDetails.age}}
+            </p> -->
+            <!-- <div class="button-section">
+                <div>
+                    <button type="button" pButton label="Edit" icon="pi pi-user-edit"
+                        (click)="openEditGroupDetailsPopUp(memberDetails)"></button>
+                </div>
+                <div>
+                    <button type="button" pButton label="Delete" icon="pi pi-trash" class="p-button-danger"
+                        (click)="openDeleteGroupDetailsPopUp(memberDetails)"></button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    </div>
+    </p-tabPanel>
+
+    </p-tabView>
+    <div *ngIf="teamDetails?.Members?.length==0">
+        <div class="card-section add-player-section">
+            <span>
+                Add player
+            </span>
+            <div>
+                <button
+                    [disabled]="teamDetails?.MaxGroupSize && teamDetails?.Members && (teamDetails?.MaxGroupSize==teamDetails?.Members?.length)"
+                    type="button" pButton icon="pi " label="Add Player" (click)="openAddPlayerDialog()"></button>
+                <!-- disabled -->
+            </div>
+
+        </div>
+    </div>
+    <!-- <p-tabView [scrollable]="true">
             <p-tabPanel header="Header 1">
               
             </p-tabPanel>
@@ -116,7 +148,8 @@
             <label for="group-name">Player Name: </label>
             <input id="group-name" type="text" formControlName="MemberName">
         </div>
-        <div class="error" *ngIf="(teamMemberForm.get('MemberName')?.invalid && (teamMemberForm.get('MemberName')?.dirty || teamMemberForm.get('MemberName')?.touched)) &&  teamMemberForm.get('MemberName')?.hasError('required')">
+        <div class="error"
+            *ngIf="(teamMemberForm.get('MemberName')?.invalid && (teamMemberForm.get('MemberName')?.dirty || teamMemberForm.get('MemberName')?.touched)) &&  teamMemberForm.get('MemberName')?.hasError('required')">
             Please enter group name
         </div>
         <!-- <div>
@@ -159,11 +192,10 @@
         <span>
             Do you want to Delete Group
         </span>
-            <label for="group-name">Player Name: </label>
-            <input id="group-name" type="text" formControlName="MemberName">
+        <label for="group-name">Player Name: </label>
+        <input id="group-name" type="text" formControlName="MemberName">
         <div>
-            <button  pButton label="Delete" icon="pi pi-trash"
-            class="p-button-danger" type="submit"></button>
+            <button pButton label="Delete" icon="pi pi-trash" class="p-button-danger" type="submit"></button>
         </div>
     </form>
 </p-dialog>
@@ -174,7 +206,7 @@
             <label for="group-id" >Group Id: </label>
             <input id="group-id" type="text" formControlName="GroupId" >
         </div> -->
-        
+
         <div>
             <label for="group-name">Player Name: </label>
             <input id="group-name" type="text" formControlName="MemberName">

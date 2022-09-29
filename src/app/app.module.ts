@@ -20,6 +20,8 @@ import { TeamPlayersComponent } from './team-players/team-players.component';
 import { InputTextModule } from "primeng/inputtext";
 import {ChartModule} from 'primeng/chart';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {ImageModule} from 'primeng/image';
+
 
 
 
@@ -48,7 +50,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
     ReactiveFormsModule,
     InputTextModule,
     ChartModule,
-    InputNumberModule
+    InputNumberModule,
+    ImageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
