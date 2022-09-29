@@ -34,11 +34,25 @@ const routes: Routes = [
                 component: OrgTeamsViewComponent,
               },
               {
-                path:"total-players",
+                path:"groups",
                 children:[
                   {
-                    path:":teamPlayerId",
-                    component: TeamPlayersComponent,
+                    path:":groupId",
+                    children:[
+                      {
+                        path:"",
+                        component: TeamPlayersComponent,
+                      },
+                      {
+                        path:"player",
+                        children:[
+                          {
+                            path:":teamPlayerId",
+                            component: TeamPlayersComponent,
+                          }
+                        ]
+                      }
+                  ]
                   }
                 ]
               }

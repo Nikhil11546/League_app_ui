@@ -15,7 +15,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { RippleModule } from 'primeng/ripple';
 import {TabViewModule} from 'primeng/tabview';
 import {DialogModule} from 'primeng/dialog';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { TeamPlayersComponent } from './team-players/team-players.component';
 import { InputTextModule } from "primeng/inputtext";
 import {ChartModule} from 'primeng/chart';
@@ -51,7 +51,8 @@ import {ImageModule} from 'primeng/image';
     InputTextModule,
     ChartModule,
     InputNumberModule,
-    ImageModule
+    ImageModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

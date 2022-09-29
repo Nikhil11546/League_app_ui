@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrgDetails } from '../models/org-details.model';
 import { TeamDetails } from '../models/team-details.model';
@@ -10,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './org-teams-view.component.html',
   styleUrls: ['./org-teams-view.component.scss']
 })
-export class OrgTeamsViewComponent implements OnInit {
+export class OrgTeamsViewComponent implements OnInit,OnDestroy {
   
 
   allTeams!: any;
@@ -63,6 +63,7 @@ export class OrgTeamsViewComponent implements OnInit {
     console.log(':::orgDetails', this.myOrganisationdata);
     this.route.params.subscribe(params=>{
       this.organizationId = params["orgId"];
+      this.teamDetailsService.selectedOrgId = params["orgId"];
       this.getAllDetails();
       this.getOrganizationDetails();
     })
@@ -83,6 +84,7 @@ export class OrgTeamsViewComponent implements OnInit {
       {
         next: (res: any) => {
           this.allTeams = res;
+          this.teamDetailsService.allTeamDetails = res;
           if(this.allTeams.length>0){
             this.getWinRatio({index:0});
           }
@@ -129,7 +131,7 @@ export class OrgTeamsViewComponent implements OnInit {
   }
   navigateToViewAllPlayers(teamDetails:TeamDetails){
     this.teamDetailsService.currentTeamDetails.next(teamDetails);
-    this.router.navigate(["/orgTeams",this.organizationId,"total-players",teamDetails.GroupId]);
+    this.router.navigate(["/orgTeams",this.organizationId,"groups",teamDetails.GroupId]);
   }
   openEditGroupDetailsPopUp(groupDetails:TeamDetails){
     this.isEditGroupModalOpen=true;
@@ -214,5 +216,10 @@ export class OrgTeamsViewComponent implements OnInit {
     } 
     ]
   }
+}
+
+ngOnDestroy(): void {
+    this.teamDetailsService.allTeamDetails=null;
+    this.teamDetailsService.selectedOrgId=null;
 }
 }

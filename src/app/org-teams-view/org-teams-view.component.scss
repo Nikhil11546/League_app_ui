@@ -25,7 +25,7 @@
     width:10%
 }
 .team-tab-menu{
-    width:90%;
+    width:100%;
     ::ng-deep .p-tabview-panels{
         background: transparent !important;
     } 
@@ -103,4 +103,14 @@
 }
 .error{
     color: red;
+}
+
+.org-details-container{
+    position: relative;
+    .add-team-container{
+        position: absolute;
+        right: 8px;
+        top: 4px;
+        z-index: 9;
+    }
 }
