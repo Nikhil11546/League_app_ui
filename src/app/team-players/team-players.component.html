@@ -3,9 +3,8 @@
         <app-nav-bar> </app-nav-bar>
     </div>
     <div class="team-tab-menu">
-        <p-tabView>
-            <p-tabPanel [header]="memberDetails.MemberName" *ngFor="let memberDetails of teamDetails.Members; let i = index"
-                [selected]="i == 0">
+        <p-tabView [(activeIndex)]="selectedIndex" >
+            <p-tabPanel [header]="memberDetails.MemberName" *ngFor="let memberDetails of teamDetails.Members; let i = index">
                 <div class="content-section">
                     <div class="team-details-section">
                         <div class="card-section add-player-section">

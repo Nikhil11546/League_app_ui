@@ -21,9 +21,10 @@ export class TeamPlayersComponent implements OnInit {
   isEditGroupModalOpen:boolean = false;
   isDeleteGroupModalOpen:boolean = false;
   organizationId!:number;
-  teamId!:number;
+  groupId!:number;
+  teamPlayerId!:number;
 
-
+  selectedIndex=0;
 
 
 
@@ -39,9 +40,24 @@ export class TeamPlayersComponent implements OnInit {
       MemberEmail: new FormControl('',[Validators.required,Validators.email]),
       // OrganizationName:new FormControl(''),
       MemberPhone:new FormControl('')
-    });
+    }); 
+    this.route.params.subscribe(params=>{
+      this.organizationId = params["orgId"];
+      this.groupId = params["groupId"];
+      this.teamPlayerId = params["teamPlayerId"];
+      console.log("params",params);
+    })
     this.teamDetailsService.currentTeamDetails.subscribe(
-      data => this.teamDetails = data
+      data => {
+        this.teamDetails = data;
+        if(this.teamPlayerId){
+          data.Members.forEach((member,index)=>{
+            if(member.MemberId==this.teamPlayerId){
+              this.selectedIndex=index;
+            }
+          })
+        }
+      }
     )
     console.log(':::orgDetails', this.teamDetails);
     // this.route.params.subscribe(params=>{
@@ -49,13 +65,7 @@ export class TeamPlayersComponent implements OnInit {
     //   this.getAllDetails();
     //   this.getOrganizationDetails();
     // })
-    this.route.params.subscribe(params=>{
-            this.organizationId = params["orgId"];
-            this.teamId = params["teamPlayerId"];
-
-
-      console.log("params",params);
-    })
+   
   }
 
   openAddPlayerDialog(){
@@ -110,7 +120,7 @@ export class TeamPlayersComponent implements OnInit {
       if(this.isAddTeamModalOpen){
         this.playerDetailsService.addTeam(this.memberDetails,this.organizationId).subscribe(res=>{
           // this.getAllDetails();
-          this.router.navigate(["/orgTeams",this.organizationId,"total-players",this.teamId]);
+          this.router.navigate(["/orgTeams",this.organizationId,"groups",this.groupId]);
           this.isAddTeamModalOpen=false;
         });
       }
@@ -120,6 +130,7 @@ export class TeamPlayersComponent implements OnInit {
         this.playerDetailsService.editTeam(this.memberDetails,this.organizationId).subscribe(res=>{
           // this.getAllDetails();
           this.isEditGroupModalOpen=false;
+          // this.memberDetails = res;
         });
       }
     }

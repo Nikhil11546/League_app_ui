@@ -15,7 +15,8 @@ export class TeamDetailsService {
   getTeamsByOrgURL= "http://127.0.0.1:8082/api/groups/byorganization/";
   teamDetails!:TeamDetails;
   currentTeamDetails: BehaviorSubject<TeamDetails> = new BehaviorSubject(this.teamDetails);
-
+  allTeamDetails!:any;
+  selectedOrgId!:string|null;
 
   // addGroupsURL= "http://127.0.0.1:8082/api/groups/";
   constructor(private httpClient : HttpClient) { }

@@ -1,7 +1,7 @@
 <header class="header-section">
-    <div class="search-section">
+    <div class="search-section" *ngIf="isTeamDetailsPage">
         <!-- <form action="/action_page.php"> -->
-            <input type="text" placeholder="Search.." name="search">
+            <input type="text" placeholder="Search.." name="search" [(ngModel)]="searchText" (keyup.enter)="searchTeamMember()">
             <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
         <!-- </form> -->
     </div>
