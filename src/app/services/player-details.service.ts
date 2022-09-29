@@ -20,8 +20,8 @@ export class PlayerDetailsService {
     return this.httpClient.put<MemberDetails>(this.apiURL + "groups/"+orgId+"/members", memberDetails);
   }
 
-  deleteTeam(orgId: number,memberId: number): void{
+  deleteTeam(orgId: number,memberId: number){
     // console.log(id);
-    this.httpClient.delete<MemberDetails>(this.apiURL + "groups/" + orgId+"/members/"+memberId).subscribe();
+    return this.httpClient.delete<MemberDetails>(this.apiURL + "groups/" + orgId+"/members/"+memberId);
   }
 }

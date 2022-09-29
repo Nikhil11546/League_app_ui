@@ -1,0 +1,41 @@
+
+<p-dialog header="Add Player" [(visible)]="isAddTeamModalOpen" (onHide)="hideAddTeamDialog()">
+    <form [formGroup]="teamMemberForm" (submit)="saveMemberDetails()">
+        <div>
+            <label for="group-name">Player Name: </label>
+            <input id="group-name" type="text" formControlName="MemberName">
+        </div>
+        <div class="error"
+            *ngIf="(teamMemberForm.get('MemberName')?.invalid && (teamMemberForm.get('MemberName')?.dirty || teamMemberForm.get('MemberName')?.touched)) &&  teamMemberForm.get('MemberName')?.hasError('required')">
+            Please enter group name
+        </div>
+        <!-- <div>
+            <label for="org-name">Organization Name: </label>
+            <input id="org-name" type="text" formControlName="OrganizationName" readonly>
+        </div> -->
+        <!-- <div>
+            <label for="group-size">Max Group size: </label>
+            <input id="group-size" type="number" formControlName="MaxGroupSize">
+        </div> -->
+        <!-- <div>
+            <label for="owner-name">Owner Name: </label>
+            <input id="owner-name" type="text" formControlName="SponsorName">
+        </div> -->
+        <div>
+            <label for="contact-email">Player Email: </label>
+            <input id="contact-email" type="email" formControlName="MemberEmail">
+        </div>
+        <div>
+            <label for="contact-phone">Player Phone: </label>
+            <input id="contact-phone" type="text" formControlName="MemberPhone">
+        </div>
+        <div>
+            <label for="contact-phone">Age: </label>
+            <input id="contact-phone" type="text" formControlName="age">
+        </div>
+        <div>
+            <button type="submit" pButton label="Save"></button>
+        </div>
+
+    </form>
+</p-dialog>

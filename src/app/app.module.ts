@@ -21,6 +21,7 @@ import { InputTextModule } from "primeng/inputtext";
 import {ChartModule} from 'primeng/chart';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {ImageModule} from 'primeng/image';
+import { AddTeamComponent } from './add-team/add-team.component';
 
 
 
@@ -35,7 +36,8 @@ import {ImageModule} from 'primeng/image';
     OrgLandingComponent,
     OrgTeamsViewComponent,
     NavBarComponent,
-    TeamPlayersComponent
+    TeamPlayersComponent,
+    AddTeamComponent
   ],
   imports: [
     BrowserModule,

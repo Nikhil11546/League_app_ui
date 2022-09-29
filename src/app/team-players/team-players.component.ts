@@ -46,9 +46,31 @@ export class TeamPlayersComponent implements OnInit {
       this.groupId = params["groupId"];
       this.teamPlayerId = params["teamPlayerId"];
       console.log("params",params);
+      this.getCurrentTeamDetails(true);
     })
-    this.teamDetailsService.currentTeamDetails.subscribe(
-      data => {
+    // this.teamDetailsService.currentTeamDetails.subscribe(
+    //   data => {
+    //     this.teamDetails = data;
+    //     if(this.teamPlayerId){
+    //       data.Members.forEach((member,index)=>{
+    //         if(member.MemberId==this.teamPlayerId){
+    //           this.selectedIndex=index;
+    //         }
+    //       })
+    //     }
+    //   }
+    // )
+    console.log(':::orgDetails', this.teamDetails);
+    // this.route.params.subscribe(params=>{
+    //   this.organizationId = params["orgId"];
+    //   this.getAllDetails();
+    //   this.getOrganizationDetails();
+    // })
+   
+  }
+
+  getCurrentTeamDetails(isDefaultCall:boolean){
+    this.teamDetailsService.getOrganizationDetails(this.groupId).subscribe(data=>{
         this.teamDetails = data;
         if(this.teamPlayerId){
           data.Members.forEach((member,index)=>{
@@ -57,15 +79,7 @@ export class TeamPlayersComponent implements OnInit {
             }
           })
         }
-      }
-    )
-    console.log(':::orgDetails', this.teamDetails);
-    // this.route.params.subscribe(params=>{
-    //   this.organizationId = params["orgId"];
-    //   this.getAllDetails();
-    //   this.getOrganizationDetails();
-    // })
-   
+    })
   }
 
   openAddPlayerDialog(){
@@ -109,26 +123,23 @@ export class TeamPlayersComponent implements OnInit {
 
   }
 
+  onPlayerAdd(data:boolean){
+   this.teamDetailsService.getOrganizationDetails(this.groupId).subscribe(res=>{
+    this.teamDetails = res;
+    this.isAddTeamModalOpen = false;
+   })
+  }
+
   saveMemberDetails(){
     if(this.teamMemberForm.valid){
       let updatedDetails= this.teamMemberForm.value;
       this.memberDetails = updatedDetails;
-  
-      console.log(updatedDetails);
-      console.log(this.memberDetails);
-  
-      if(this.isAddTeamModalOpen){
-        this.playerDetailsService.addTeam(this.memberDetails,this.organizationId).subscribe(res=>{
-          // this.getAllDetails();
-          this.router.navigate(["/orgTeams",this.organizationId,"groups",this.groupId]);
-          this.isAddTeamModalOpen=false;
-        });
-      }
-  
+   
       if(this.isEditGroupModalOpen){
         console.log()
         this.playerDetailsService.editTeam(this.memberDetails,this.organizationId).subscribe(res=>{
           // this.getAllDetails();
+          this.getCurrentTeamDetails(false);
           this.isEditGroupModalOpen=false;
           // this.memberDetails = res;
         });
@@ -138,7 +149,9 @@ export class TeamPlayersComponent implements OnInit {
   deleteGroup(){
     let memberId=this.teamMemberForm.value.MemberId;
       console.log(this.memberDetails);
-      this.playerDetailsService.deleteTeam(this.organizationId,memberId);
+      this.playerDetailsService.deleteTeam(this.organizationId,memberId).subscribe(res=>{
+        this.getCurrentTeamDetails(false);
+      });
       this.isDeleteGroupModalOpen=false;
   }
 }

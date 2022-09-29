@@ -18,7 +18,7 @@
                                 <button
                                     [disabled]="myOrganisationdata?.MaxGroupSize && myOrganisationdata?.Members && (myOrganisationdata?.MaxGroupSize==myOrganisationdata?.Members?.length)"
                                     type="button" pButton icon="pi " label="Add Player"
-                                    (click)="openAddPlayerDialog()"></button>
+                                    (click)="openAddPlayerDialog(teamDetails)"></button>
                                 <!-- disabled -->
                             </div>
 
@@ -263,3 +263,4 @@
         </form>
     </p-dialog>
 </section>
+<app-add-team [isAddTeamModalOpen]="isAddPlayerModalOpen" [teamDetails]="selectedTeamDetails" [organizationId]="organizationId" (onPlayerAdd)="onPlayerAdd($event)"></app-add-team>

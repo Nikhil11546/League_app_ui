@@ -22,6 +22,8 @@ export class OrgTeamsViewComponent implements OnInit,OnDestroy {
   memberDetailsList!: TeamDetails;
   errorMessage!: string;
   isAddTeamModalOpen:boolean = false;
+  isAddPlayerModalOpen:boolean = false;
+  selectedTeamDetails:any;
   isEditGroupModalOpen:boolean = false;
   isDeleteGroupModalOpen:boolean = false;
   groupForm!:FormGroup;
@@ -114,20 +116,16 @@ export class OrgTeamsViewComponent implements OnInit,OnDestroy {
     )
   }
 
-  openAddPlayerDialog(){
-    this.isAddTeamModalOpen=true;
-    this.groupForm.reset();
-    this.groupForm.patchValue({
-      GroupId: '',
-      GroupName: '',
-      MaxGroupSize: '',
-      SponsorName: '',
-      SponsorEmail: '',
-      WinsRatio: 0,
-      OrganizationName: this.myOrganisationdata.OrganizationName,
-      SponsorPhone:''
-    });
-
+  openAddPlayerDialog(teamDetails?:any){
+    this.selectedTeamDetails=teamDetails;
+    if(!this.selectedTeamDetails){
+      this.selectedTeamDetails=this.myOrganisationdata
+    }
+    this.isAddPlayerModalOpen=true;
+  }
+  onPlayerAdd(data:boolean){
+    this.isAddPlayerModalOpen = false;
+    this.getAllDetails();
   }
   navigateToViewAllPlayers(teamDetails:TeamDetails){
     this.teamDetailsService.currentTeamDetails.next(teamDetails);
