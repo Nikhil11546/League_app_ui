@@ -14,6 +14,7 @@ export class OrgTeamsViewComponent implements OnInit, OnDestroy {
 
 
   allTeams!: any;
+  orgName!: any;
   data!: any;
   myOrganisationdata!: TeamDetails;
   organizationId!: number;
@@ -28,6 +29,7 @@ export class OrgTeamsViewComponent implements OnInit, OnDestroy {
   isDeleteGroupModalOpen: boolean = false;
   groupForm!: FormGroup;
   selectedIndex: number = 0;
+  groupId!: number;
 
   constructor(private orgDetailsService: OrganizationDetailsService, private teamDetailsService: TeamDetailsService, private router: Router, private route: ActivatedRoute) { }
 
@@ -86,6 +88,7 @@ export class OrgTeamsViewComponent implements OnInit, OnDestroy {
       {
         next: (res: any) => {
           this.allTeams = res;
+          this.orgName = this.allTeams[0]?.OrganizationName;
           this.teamDetailsService.allTeamDetails = res;
           if (this.allTeams.length > 0) {
             this.getWinRatio({ index: 0 });
@@ -119,9 +122,10 @@ export class OrgTeamsViewComponent implements OnInit, OnDestroy {
   openAddPlayerDialog(teamDetails?: any) {
     this.selectedTeamDetails = teamDetails;
     if (!this.selectedTeamDetails) {
-      this.selectedTeamDetails = this.myOrganisationdata
+      this.selectedTeamDetails = {OrganizationName:this.orgName};
     }
     this.isAddPlayerModalOpen = true;
+    this.groupId=teamDetails.GroupId;
   }
   onPlayerAdd(data: boolean) {
     this.isAddPlayerModalOpen = false;
@@ -142,7 +146,7 @@ export class OrgTeamsViewComponent implements OnInit, OnDestroy {
       SponsorName: '',
       SponsorEmail: '',
       WinsRatio: '',
-      OrganizationName: this.myOrganisationdata.OrganizationName,
+      OrganizationName: this.orgName,
       SponsorPhone: ''
     });
 

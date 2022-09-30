@@ -13,6 +13,8 @@ export class AddTeamComponent implements OnInit {
   @Input() isAddTeamModalOpen!:boolean;
   @Input() teamDetails!:any;
   @Input() organizationId!:number;
+  @Input() groupId!:number;
+
   @Output() onPlayerAdd = new EventEmitter<boolean>()
   teamMemberForm!:FormGroup;
   memberDetails!:MemberDetails;
@@ -30,7 +32,7 @@ export class AddTeamComponent implements OnInit {
       ImageUrl: new FormControl(''),
       PerformanceGood:new FormControl(''),
       PerformanceBad:new FormControl(''),
-      PerformanceAverage:new FormControl('') 
+      PerformanceAverage:new FormControl(''),
     }); 
   }
 
@@ -44,12 +46,14 @@ export class AddTeamComponent implements OnInit {
       MemberEmail: '',
       // OrganizationName:'',
       MemberPhone:'',
+      // OrganizationName: '', uncomment
       OrganizationName: this.teamDetails.OrganizationName,
+
       ImageUrl: '',
       PerformanceGood:'',
       PerformanceBad:'',
-      PerformanceAverage:''  
-      // SponsorPhone:''
+      PerformanceAverage:''
+            // SponsorPhone:''
     });
   }
 
@@ -62,7 +66,7 @@ export class AddTeamComponent implements OnInit {
       console.log(this.memberDetails);
   
       if(this.isAddTeamModalOpen){
-        this.playerDetailsService.addTeam(this.memberDetails,this.organizationId).subscribe(res=>{
+        this.playerDetailsService.addTeam(this.memberDetails,this.groupId).subscribe(res=>{
           this.onPlayerAdd.emit(true);
           this.hideAddTeamDialog();
         //   // this.getAllDetails();

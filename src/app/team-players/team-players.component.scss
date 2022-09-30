@@ -64,6 +64,11 @@
     }
 
     .details-section{
+
+        >p:nth-child(1){
+            font-weight: bold;
+            font-size:24px;
+        }
         flex:1;
         width: 70%;
         height: 50vh;
@@ -130,8 +135,6 @@
                 align-items: right;
                 justify-content: space-around;
                 flex-direction: row;
-
-
             }
         }
     }

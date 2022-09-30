@@ -156,7 +156,7 @@ export class TeamPlayersComponent implements OnInit {
    
       if(this.isEditGroupModalOpen){
         console.log()
-        this.playerDetailsService.editTeam(this.memberDetails,this.organizationId).subscribe(res=>{
+        this.playerDetailsService.editTeam(this.memberDetails,this.groupId).subscribe(res=>{
           // this.getAllDetails();
           this.getCurrentTeamDetails(false);
           this.isEditGroupModalOpen=false;
@@ -168,7 +168,7 @@ export class TeamPlayersComponent implements OnInit {
   deleteGroup(){
     let memberId=this.teamMemberForm.value.MemberId;
       console.log(this.memberDetails);
-      this.playerDetailsService.deleteTeam(this.organizationId,memberId).subscribe(res=>{
+      this.playerDetailsService.deleteTeam(this.groupId,memberId).subscribe(res=>{
         this.getCurrentTeamDetails(false);
       });
       this.isDeleteGroupModalOpen=false;

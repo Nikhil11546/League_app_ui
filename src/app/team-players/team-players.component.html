@@ -32,7 +32,7 @@
                                 Player Details
                             </p>
                             <p>
-                                <strong>Player Id : </strong> {{memberDetails.MemberId}}
+                                <strong>Player Id : </strong> {{memberDetails.MemberId}} &nbsp; &nbsp; &nbsp;
                                 <!-- </p>
                                     <p> -->
                                 <strong>Player Name : </strong> {{memberDetails.MemberName}}
@@ -44,7 +44,7 @@
                                     <strong>Owner Name : </strong> {{teamDetails.SponsorName}}
                                 </p> -->
                             <p>
-                                <strong>Player Email : </strong> {{memberDetails.MemberEmail}}
+                                <strong>Player Email : </strong> {{memberDetails.MemberEmail}} &nbsp; &nbsp; &nbsp
                                 <!-- </p>
                                     <p> -->
                                 <strong>Player Phone : </strong> {{memberDetails.MemberPhone}}
@@ -239,4 +239,4 @@
         </div>
     </form>
 </p-dialog>
-<app-add-team [isAddTeamModalOpen]="isAddTeamModalOpen" [teamDetails]="teamDetails" [organizationId]="organizationId" (onPlayerAdd)="onPlayerAdd($event)"></app-add-team>
+<app-add-team [isAddTeamModalOpen]="isAddTeamModalOpen" [teamDetails]="teamDetails" [organizationId]="organizationId" [groupId]="groupId"(onPlayerAdd)="onPlayerAdd($event)"></app-add-team>

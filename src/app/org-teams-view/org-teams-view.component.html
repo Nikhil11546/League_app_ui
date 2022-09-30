@@ -113,7 +113,7 @@
             <div *ngIf="allTeams?.length==0">
                 <div class="card-section no-team-section">
                     <span>
-                        Please add a Team first
+                        Please add a Team to this Organization:
                     </span>
                     <!-- <div> -->
                         <!-- <button
@@ -161,7 +161,7 @@
     
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                        <input type="text" id="org-name" class="p-inputtext-sm" pInputText placeholder="Organization Name" formControlName="OrganizationName" readonly  >
+                        <input type="text" id="org-name" class="p-inputtext-sm" pInputText placeholder="Organization Name" formControlName="OrganizationName" >
                     </div>
                 </div>
             </div>
@@ -402,4 +402,4 @@
         </form>
     </p-dialog>
 </section>
-<app-add-team [isAddTeamModalOpen]="isAddPlayerModalOpen" [teamDetails]="selectedTeamDetails" [organizationId]="organizationId" (onPlayerAdd)="onPlayerAdd($event)"></app-add-team>
+<app-add-team [isAddTeamModalOpen]="isAddPlayerModalOpen" [teamDetails]="selectedTeamDetails" [organizationId]="organizationId"  [groupId]="groupId" (onPlayerAdd)="onPlayerAdd($event)"></app-add-team>
