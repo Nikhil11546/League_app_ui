@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="error"
-            *ngIf="(teamMemberForm.get('MemberEmail')?.invalid && (teamMemberForm.get('MemberEmail')?.dirty || teamMemberForm.get('MemberEmail')?.touched)) &&  teamMemberForm.get('MemberEmail')?.hasError('required')">
+            *ngIf="(teamMemberForm.get('MemberEmail')?.invalid && (teamMemberForm.get('MemberEmail')?.dirty || teamMemberForm.get('MemberEmail')?.touched)) &&  (teamMemberForm.get('MemberEmail')?.hasError('required') || teamMemberForm.get('MemberEmail')?.hasError('email'))">
             Please enter valid email
         </div>
   

@@ -22,17 +22,17 @@ export class AddTeamComponent implements OnInit {
 
   ngOnInit(): void {
     this.teamMemberForm = new FormGroup({
-      MemberId: new FormControl(''),
+      MemberId: new FormControl('',),
       MemberName: new FormControl('',[Validators.required]),
-      age: new FormControl(''),
+      age: new FormControl('',[Validators.required]),
       // SponsorName: new FormControl(''),
       MemberEmail: new FormControl('',[Validators.required,Validators.email]),
       OrganizationName:new FormControl(''),
-      MemberPhone:new FormControl(''),
-      ImageUrl: new FormControl(''),
-      PerformanceGood:new FormControl(''),
-      PerformanceBad:new FormControl(''),
-      PerformanceAverage:new FormControl(''),
+      MemberPhone:new FormControl('',[Validators.required]),
+      ImageUrl: new FormControl('',[Validators.required]),
+      PerformanceGood:new FormControl('',[Validators.required]),
+      PerformanceBad:new FormControl('',[Validators.required]),
+      PerformanceAverage:new FormControl('',[Validators.required]),
     }); 
   }
 

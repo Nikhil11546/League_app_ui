@@ -218,7 +218,7 @@
                 </div>
             </div>
             <div class="error"
-                *ngIf="(groupForm.get('SponsorEmail')?.invalid && (groupForm.get('SponsorEmail')?.dirty || groupForm.get('SponsorEmail')?.touched)) &&  groupForm.get('SponsorEmail')?.hasError('required')">
+                *ngIf="(groupForm.get('SponsorEmail')?.invalid && (groupForm.get('SponsorEmail')?.dirty || groupForm.get('SponsorEmail')?.touched)) &&  (groupForm.get('SponsorEmail')?.hasError('required') || groupForm.get('SponsorEmail')?.hasError('email'))">
                 Please enter valid email
             </div>
             <!-- <div>

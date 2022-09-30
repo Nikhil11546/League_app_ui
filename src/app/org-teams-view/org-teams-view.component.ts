@@ -37,12 +37,12 @@ export class OrgTeamsViewComponent implements OnInit, OnDestroy {
     this.groupForm = new FormGroup({
       GroupId: new FormControl(''),
       GroupName: new FormControl('', [Validators.required]),
-      MaxGroupSize: new FormControl(''),
-      SponsorName: new FormControl(''),
+      MaxGroupSize: new FormControl('',[Validators.required]),
+      SponsorName: new FormControl('',[Validators.required]),
       SponsorEmail: new FormControl('', [Validators.required, Validators.email]),
       OrganizationName: new FormControl(''),
-      SponsorPhone: new FormControl(''),
-      WinsRatio: new FormControl('')
+      SponsorPhone: new FormControl('',[Validators.required]),
+      WinsRatio: new FormControl('',[Validators.required])
     });
     // this.orgDetailsService.currentOrgDetails.subscribe(
     //   data => this.myOrganisationdata = data
