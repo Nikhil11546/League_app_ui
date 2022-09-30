@@ -141,7 +141,7 @@ export class OrgTeamsViewComponent implements OnInit, OnDestroy {
       MaxGroupSize: '',
       SponsorName: '',
       SponsorEmail: '',
-      WinsRatio: 0,
+      WinsRatio: '',
       OrganizationName: this.myOrganisationdata.OrganizationName,
       SponsorPhone: ''
     });
@@ -156,7 +156,8 @@ export class OrgTeamsViewComponent implements OnInit, OnDestroy {
       SponsorName: groupDetails.SponsorName,
       SponsorEmail: groupDetails.SponsorEmail,
       SponsorPhone: groupDetails.SponsorPhone,
-      OrganizationName: this.myOrganisationdata.OrganizationName
+      OrganizationName: this.myOrganisationdata.OrganizationName,
+      WinsRatio: groupDetails.WinsRatio
     });
   }
 

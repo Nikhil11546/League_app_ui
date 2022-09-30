@@ -242,6 +242,7 @@ app.post("/api/groups", urlencodedParser, function (req, res) {
     SponsorPhone: req.body.SponsorPhone,
     SponsorEmail: req.body.SponsorEmail,
     MaxGroupSize: Number(req.body.MaxGroupSize),
+    WinsRatio:Number(req.body.WinsRatio),
     Members: [],
   };
 
@@ -282,6 +283,7 @@ app.put("/api/groups", urlencodedParser, function (req, res) {
     SponsorPhone: req.body.SponsorPhone,
     SponsorEmail: req.body.SponsorEmail,
     MaxGroupSize: Number(req.body.MaxGroupSize),
+    WinsRatio:Number(req.body.WinsRatio)
   };
 
   console.log("Performing validation...");
@@ -309,6 +311,7 @@ app.put("/api/groups", urlencodedParser, function (req, res) {
   match.SponsorName = group.SponsorName;
   match.SponsorPhone = group.SponsorPhone;
   match.SponsorEmail = group.SponsorEmail;
+  match.WinsRatio = Number(group.WinsRatio);
 
   // make sure new values for MaxGroupSize doesn't invalidate grooup
   if (Number(group.MaxGroupSize) < match.Members.length) {
@@ -362,6 +365,7 @@ app.post("/api/groups/:id/members", urlencodedParser, function (req, res) {
     MemberEmail: req.body.MemberEmail,
     MemberName: req.body.MemberName,
     MemberPhone: req.body.MemberPhone,
+    age:req.body.age
   };
 
   console.log("Performing member validation...");

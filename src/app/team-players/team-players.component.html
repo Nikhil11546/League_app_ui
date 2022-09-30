@@ -1,10 +1,16 @@
 <section class="org-teams-tab">
-    <div class="team-nav-bar">
-        <app-nav-bar> </app-nav-bar>
+    <div class="add-team-container">
+        <button [disabled]="teamDetails?.MaxGroupSize && teamDetails?.Members && (teamDetails?.MaxGroupSize==teamDetails?.Members?.length)"
+        type="button" pButton label="Add Player"
+        (click)="openAddPlayerDialog()"></button>
     </div>
+    <!-- <div class="team-nav-bar">
+        <app-nav-bar> </app-nav-bar>
+    </div> -->
     <div class="team-tab-menu">
-        <p-tabView [(activeIndex)]="selectedIndex" >
-            <p-tabPanel [header]="memberDetails.MemberName" *ngFor="let memberDetails of teamDetails.Members; let i = index">
+        <p-tabView (onChange)="getPerformaceRatio(($event))" [(activeIndex)]="selectedIndex" >
+            <p-tabPanel [header]="memberDetails.MemberName" *ngFor="let memberDetails of teamDetails.Members; let i = index"
+            [selected]="i == 0">
                 <div class="content-section">
                     <div class="team-details-section">
 
@@ -68,46 +74,16 @@
                 
                         </div> -->
     </div>
-    <div class="team-statics-section">
+    <!-- <div class="team-statics-section">
         We are 100 % win
-    </div>
+    </div> -->
     <div class="team-section">
         <div class="graph-section">
-            graph section
+            <p-chart type="pie" [data]="data" [options]="chartOptions" [style]="{'width': '80%'}">
+            </p-chart>
         </div>
         <div class="details-section">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil fuga quis officiis quae accusantium voluptatum tempore iure odio labore quos cupiditate saepe id, dolore repellat fugit molestias fugiat libero molestiae.</p>
-            <!-- <p>
-                <strong>Player Id : </strong> {{memberDetails.MemberId}}
-            </p>
-            <p>
-                <strong>Player Name : </strong> {{memberDetails.MemberName}}
-            </p> -->
-            <!-- <p>
-                                <strong>Max Team size : </strong> {{memberDetails.Me}}
-                            </p> -->
-            <!-- <p>
-                                <strong>Owner Name : </strong> {{teamDetails.SponsorName}}
-                            </p> -->
-            <!-- <p>
-                <strong>Player Email : </strong> {{memberDetails.MemberEmail}}
-            </p>
-            <p>
-                <strong>Player Phone : </strong> {{memberDetails.MemberPhone}}
-            </p>
-            <p>
-                <strong>Age : </strong> {{memberDetails.age}}
-            </p> -->
-            <!-- <div class="button-section">
-                <div>
-                    <button type="button" pButton label="Edit" icon="pi pi-user-edit"
-                        (click)="openEditGroupDetailsPopUp(memberDetails)"></button>
-                </div>
-                <div>
-                    <button type="button" pButton label="Delete" icon="pi pi-trash" class="p-button-danger"
-                        (click)="openDeleteGroupDetailsPopUp(memberDetails)"></button>
-                </div>
-            </div> -->
         </div>
     </div>
     </div>
@@ -142,11 +118,11 @@
     </div>
 </section>
 
-<div>
+<!-- <div>
     <button
-        type="button" pButton icon="pi " label="Add Player" (click)="openAddPlayerDialog()"></button>
+        type="button" pButton icon="pi " label="Add Player" (click)="openAddPlayerDialog()"></button> -->
     <!-- disabled -->
-</div>
+<!-- </div> -->
 <p-dialog header="Delete Group" [(visible)]="isDeleteGroupModalOpen">
     <form [formGroup]="teamMemberForm" (submit)="deleteGroup()">
         <!-- <div>

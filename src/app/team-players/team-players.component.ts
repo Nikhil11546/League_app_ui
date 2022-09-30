@@ -15,6 +15,8 @@ import { PlayerDetailsService } from '../services/player-details.service';
 export class TeamPlayersComponent implements OnInit {
 
   teamMemberForm!:FormGroup;
+  data!: any;
+  chartOptions!:any;
   teamDetails!:any;
   memberDetails!:MemberDetails;
   isAddTeamModalOpen:boolean = false;
@@ -39,8 +41,14 @@ export class TeamPlayersComponent implements OnInit {
       // SponsorName: new FormControl(''),
       MemberEmail: new FormControl('',[Validators.required,Validators.email]),
       // OrganizationName:new FormControl(''),
-      MemberPhone:new FormControl('')
-    }); 
+      MemberPhone:new FormControl(''),
+      ImageUrl:new FormControl(''),
+      PerformanceGood:new FormControl(''),
+      PerformaneBad:new FormControl(''),
+      PerformanceAverage:new FormControl('')  
+      }); 
+      this.chartOptions = this.getDarkTheme();
+
     this.route.params.subscribe(params=>{
       this.organizationId = params["orgId"];
       this.groupId = params["groupId"];
@@ -72,10 +80,14 @@ export class TeamPlayersComponent implements OnInit {
   getCurrentTeamDetails(isDefaultCall:boolean){
     this.teamDetailsService.getOrganizationDetails(this.groupId).subscribe(data=>{
         this.teamDetails = data;
+        if (this.teamDetails.Members.length > 0) {
+          this.getPerformaceRatio({ index: 0 });
+        }
         if(this.teamPlayerId){
           data.Members.forEach((member,index)=>{
             if(member.MemberId==this.teamPlayerId){
               this.selectedIndex=index;
+              // this.getWinRatio({index:this.selectedIndex});
             }
           })
         }
@@ -93,7 +105,11 @@ export class TeamPlayersComponent implements OnInit {
       MemberEmail: '',
       // OrganizationName:'',
       MemberPhone:'',
-      OrganizationName: this.teamDetails.OrganizationName,
+      ImageUrl:'',
+      PerformanceGood:'',
+      PerformaneBad:'',
+      PerformanceAverage:'', 
+      OrganizationName: this.teamDetails.OrganizationName
       // SponsorPhone:''
     });
 
@@ -108,8 +124,11 @@ export class TeamPlayersComponent implements OnInit {
       // SponsorName: memberDetails.SponsorName,
       MemberEmail: memberDetails.MemberEmail,
       MemberPhone: memberDetails.MemberPhone,
+      // ImageUrl:memberDetails.ImageUrl,
+      PerformanceGood:memberDetails.PerformanceGood,
+      PerformaneBad:memberDetails.PerformaneBad,
+      PerformanceAverage:memberDetails.PerformanceAverage, 
       age: memberDetails.age,
-
       OrganizationName: this.teamDetails.OrganizationName
     });
   }
@@ -153,5 +172,42 @@ export class TeamPlayersComponent implements OnInit {
         this.getCurrentTeamDetails(false);
       });
       this.isDeleteGroupModalOpen=false;
+  }
+
+  getDarkTheme() {
+    return {
+      plugins: {
+        legend: {
+          labels: {
+            color: '#ebedef'
+          }
+        }
+      }
+    }
+  }
+  getPerformaceRatio(event: any): void {
+    this.selectedIndex = event.index;
+    let memberDetails = this.teamDetails.Members[this.selectedIndex];
+    // console.log("Winratio:::" + winRatio);
+    console.log("Winratio:::" + this.selectedIndex);
+
+    this.data = {
+      labels: ['Good Performance', 'Average Performance', 'Bad Performance'],
+      datasets: [
+        {
+          data: [memberDetails.PerformanceGood, memberDetails.PerformanceAverage, memberDetails.PerformaneBad],
+          backgroundColor: [
+            "#42A5F5",
+            "#66BB6A",
+            "#FFA726"
+          ],
+          hoverBackgroundColor: [
+            "#64B5F6",
+            "#81C784",
+            "#FFB74D"
+          ]
+        }
+      ]
+    }
   }
 }

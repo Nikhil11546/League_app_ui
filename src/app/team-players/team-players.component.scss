@@ -2,15 +2,36 @@
     display:flex;
 }
 
+
+::ng-deep .p-tabview-nav-content{
+    ul{
+        background: black !important;
+        color: aliceblue;
+        opacity: 1;
+        li{
+            a{
+                background: black !important;
+                color: #fff !important;
+
+            }
+            &.p-highlight{
+                a{
+                    color:red !important
+                }
+            }
+        }
+    }
+}
 .team-nav-bar{
     width:10%
 }
 .team-tab-menu{
-    width:90%;
+    width:100%;
     ::ng-deep .p-tabview-panels{
         background: transparent !important;
     } 
 }
+
 .team-details-section {
     display: flex;
     flex-direction: row;
@@ -115,4 +136,14 @@
 }
 .error{
     color: red;
+}
+
+.org-teams-tab{
+    position: relative;
+    .add-team-container{
+        position: absolute;
+        right: 8px;
+        top: 4px;
+        z-index: 9;
+    }
 }
