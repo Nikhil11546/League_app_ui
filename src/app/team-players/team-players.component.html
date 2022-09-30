@@ -10,13 +10,13 @@
     <div class="team-tab-menu">
         <p-tabView (onChange)="getPerformaceRatio(($event))" [(activeIndex)]="selectedIndex" >
             <p-tabPanel [header]="memberDetails.MemberName" *ngFor="let memberDetails of teamDetails.Members; let i = index"
-            [selected]="i == 0">
+           >
                 <div class="content-section">
                     <div class="team-details-section">
 
                         <div class="img-section view-players-section">
 
-                            <p-image [src]="memberDetails.ImageUrl" alt="Image" width="250">
+                            <p-image [src]="memberDetails.ImageUrl" alt="Image" width="80%">
                                 <ng-template pTemplate="indicator">
                                     Indicator Content
                                 </ng-template>
@@ -98,7 +98,7 @@
             <div>
                 <button
                     [disabled]="teamDetails?.MaxGroupSize && teamDetails?.Members && (teamDetails?.MaxGroupSize==teamDetails?.Members?.length)"
-                    type="button" pButton icon="pi " label="Add Player" (click)="openAddPlayerDialog()"></button>
+                    type="button" pButton icon="pi pi-user-plus" label="Add Player" (click)="openAddPlayerDialog()"></button>
                 <!-- disabled -->
             </div>
 

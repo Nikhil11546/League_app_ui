@@ -1,13 +1,13 @@
 <section class="org-details-container">
     <div class="add-team-container">
         <button [disabled]="myOrganisationdata?.MaxGroupSize && myOrganisationdata?.Members && (myOrganisationdata?.MaxGroupSize==myOrganisationdata?.Members?.length)"
-        type="button" pButton label="Add Team"
+        type="button" icon="pi pi-plus" pButton label="Add Team"
         (click)="openAddGroupDetailsPopUp()"></button>
     </div>
     <div class="team-tab-menu">
         <p-tabView (onChange)="getWinRatio(($event))" [activeIndex]="selectedIndex">
             <p-tabPanel  [header]="teamDetails.GroupName" *ngFor="let teamDetails of allTeams; let i = index"
-                [selected]="i == 0">
+                >
                 <div class="content-section">
                     <div class="team-details-section">
                         <div class="card-section add-player-section">
@@ -17,7 +17,7 @@
                             <div>
                                 <button
                                     [disabled]="myOrganisationdata?.MaxGroupSize && myOrganisationdata?.Members && (myOrganisationdata?.MaxGroupSize==myOrganisationdata?.Members?.length)"
-                                    type="button" pButton icon="pi " label="Add Player"
+                                    type="button" pButton icon="pi pi-user-plus" label="Add Player"
                                     (click)="openAddPlayerDialog(teamDetails)"></button>
                                 <!-- disabled -->
                             </div>
@@ -28,7 +28,7 @@
                                 View All Players
                             </span>
                             <div>
-                                <button type="button" pButton icon="pi" label="Players List"
+                                <button type="button" pButton icon="pi pi-users" label="Players List"
                                     (click)="navigateToViewAllPlayers(teamDetails)"></button>
                             </div>
 
@@ -38,7 +38,7 @@
                                 View budget
                             </span>
                             <div>
-                                <button type="button" pButton icon="pi" label="Budget" disabled></button>
+                                <button type="button" pButton icon="pi pi-dollar" label="Budget" disabled></button>
                             </div>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                             </p>
                             <div class="button-section">
                                 <div>
-                                    <button type="button" pButton label="Edit" icon="pi pi-user-edit"
+                                    <button type="button" pButton label="Edit" icon="pi pi-file-edit"
                                         (click)="openEditGroupDetailsPopUp(teamDetails)"></button>
                         </div>
                                 <div>

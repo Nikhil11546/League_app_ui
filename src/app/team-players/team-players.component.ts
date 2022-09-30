@@ -80,16 +80,16 @@ export class TeamPlayersComponent implements OnInit {
   getCurrentTeamDetails(isDefaultCall:boolean){
     this.teamDetailsService.getOrganizationDetails(this.groupId).subscribe(data=>{
         this.teamDetails = data;
-        if (this.teamDetails.Members.length > 0) {
-          this.getPerformaceRatio({ index: 0 });
-        }
         if(this.teamPlayerId){
-          data.Members.forEach((member,index)=>{
+          data.Members.forEach((member,i)=>{
             if(member.MemberId==this.teamPlayerId){
-              this.selectedIndex=index;
-              // this.getWinRatio({index:this.selectedIndex});
+              this.selectedIndex=i;
+              this.getPerformaceRatio({index: i})
             }
           })
+        }
+        else if (this.teamDetails.Members.length > 0) {
+          this.getPerformaceRatio({ index: 0 });
         }
     })
   }
