@@ -1,7 +1,7 @@
 <section class="org-teams-tab">
     <div class="add-team-container">
         <button [disabled]="teamDetails?.MaxGroupSize && teamDetails?.Members && (teamDetails?.MaxGroupSize==teamDetails?.Members?.length)"
-        type="button" pButton label="Add Player"
+        type="button" icon="pi pi-user-plus" pButton label="Add Player"
         (click)="openAddPlayerDialog()"></button>
     </div>
     <!-- <div class="team-nav-bar">

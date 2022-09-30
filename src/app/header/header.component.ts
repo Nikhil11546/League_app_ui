@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.events.subscribe((val) => {
-      // see also 
       if(val instanceof NavigationEnd){
         let urls = val.url.split("/").filter(x=>x)
         if(urls.length==2 && urls[0]=="orgTeams"){
@@ -42,6 +41,10 @@ export class HeaderComponent implements OnInit {
         }
       });
     }
+  }
+
+  homePage(){
+    this.router.navigate(["/"]);
   }
 
 }

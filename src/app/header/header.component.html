@@ -1,11 +1,11 @@
 <header class="header-section">
     <div class="search-section" *ngIf="isTeamDetailsPage">
         <!-- <form action="/action_page.php"> -->
-            <input type="text" placeholder="Search.." name="search" [(ngModel)]="searchText" (keyup.enter)="searchTeamMember()">
+            <input type="text" placeholder="Search All Players..." name="search" [(ngModel)]="searchText" (keyup.enter)="searchTeamMember()">
             <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
         <!-- </form> -->
     </div>
     <div class="logo-section">
-        <img class="logo-img" src="../../assets/images/Premier_Leagues_World_cup.jpg">
+        <img class="logo-img" src="../../assets/images/Premier_Leagues_World_cup.jpg" (click)="homePage()">
     </div>
 </header>
