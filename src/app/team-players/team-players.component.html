@@ -91,7 +91,20 @@
 
     </p-tabView>
     <div *ngIf="teamDetails?.Members?.length==0">
-        <div class="card-section add-player-section">
+        <div class="no-player-section{ 
+            ">
+            <span>
+                Please add a Players to this Team:
+            </span>
+            <!-- <div> -->
+                <!-- <button
+                    [disabled]="myOrganisationdata?.MaxGroupSize && myOrganisationdata?.Members && (myOrganisationdata?.MaxGroupSize==myOrganisationdata?.Members?.length)"
+                    type="button" pButton icon="pi " label="Add Player" (click)="openAddPlayerDialog()"></button> -->
+                <!-- disabled -->
+            <!-- </div> -->
+
+        </div>
+        <!-- <div class="card-section add-player-section">
             <span>
                 Add player
             </span>
@@ -99,10 +112,9 @@
                 <button
                     [disabled]="teamDetails?.MaxGroupSize && teamDetails?.Members && (teamDetails?.MaxGroupSize==teamDetails?.Members?.length)"
                     type="button" pButton icon="pi pi-user-plus" label="Add Player" (click)="openAddPlayerDialog()"></button>
-                <!-- disabled -->
             </div>
 
-        </div>
+        </div> -->
     </div>
     <!-- <p-tabView [scrollable]="true">
             <p-tabPanel header="Header 1">
@@ -133,7 +145,8 @@
             Do you want to Delete Group
         </span>
         <label for="group-name">Player Name: </label>
-        <input id="group-name" type="text" formControlName="MemberName">
+        <!-- <input id="group-name" type="text" formControlName="MemberName"> -->
+        <strong>{{teamMemberForm.get("MemberName")?.value}}</strong>
         <div>
             <button pButton label="Delete" icon="pi pi-trash" class="p-button-danger" type="submit"></button>
         </div>
