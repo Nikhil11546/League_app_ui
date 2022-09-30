@@ -6,6 +6,6 @@ export class MemberDetails {
     age!: number;
     ImageUrl!: string;
     PerformanceGood!: number;
-    PerformaneBad!: number;
+    PerformanceBad!: number;
     PerformanceAverage!: number;
 }

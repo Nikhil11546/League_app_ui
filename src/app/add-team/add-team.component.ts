@@ -26,7 +26,11 @@ export class AddTeamComponent implements OnInit {
       // SponsorName: new FormControl(''),
       MemberEmail: new FormControl('',[Validators.required,Validators.email]),
       OrganizationName:new FormControl(''),
-      MemberPhone:new FormControl('')
+      MemberPhone:new FormControl(''),
+      ImageUrl: new FormControl(''),
+      PerformanceGood:new FormControl(''),
+      PerformanceBad:new FormControl(''),
+      PerformanceAverage:new FormControl('') 
     }); 
   }
 
@@ -41,6 +45,10 @@ export class AddTeamComponent implements OnInit {
       // OrganizationName:'',
       MemberPhone:'',
       OrganizationName: this.teamDetails.OrganizationName,
+      ImageUrl: '',
+      PerformanceGood:'',
+      PerformanceBad:'',
+      PerformanceAverage:''  
       // SponsorPhone:''
     });
   }

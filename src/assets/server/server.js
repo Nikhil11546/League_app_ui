@@ -365,7 +365,11 @@ app.post("/api/groups/:id/members", urlencodedParser, function (req, res) {
     MemberEmail: req.body.MemberEmail,
     MemberName: req.body.MemberName,
     MemberPhone: req.body.MemberPhone,
-    age:req.body.age
+    age: req.body.age,
+    ImageUrl: req.body.ImageUrl,
+    PerformanceGood: req.body.PerformanceGood,
+    PerformanceBad: req.body.PerformanceBad,
+    PerformanceAverage: req.body.PerformanceAverage
   };
 
   console.log("Performing member validation...");
@@ -417,6 +421,11 @@ app.put("/api/groups/:id/members", urlencodedParser, function (req, res) {
     MemberEmail: req.body.MemberEmail,
     MemberName: req.body.MemberName,
     MemberPhone: req.body.MemberPhone,
+    age: req.body.age,
+    ImageUrl: req.body.ImageUrl,
+    PerformanceGood: req.body.PerformanceGood,
+    PerformanceBad: req.body.PerformanceBad,
+    PerformanceAverage: req.body.PerformanceAverage
   };
 
   console.log("Performing member validation...");
@@ -451,7 +460,10 @@ app.put("/api/groups/:id/members", urlencodedParser, function (req, res) {
   match.MemberEmail = req.body.MemberEmail;
   match.MemberName = req.body.MemberName;
   match.MemberPhone = req.body.MemberPhone;
-
+  match.age=req.body.age;
+  match.PerformanceGood= req.body.PerformanceGood;
+  match.PerformanceBad= req.body.PerformanceBad;
+  match.PerformanceAverage= req.body.PerformanceAverage;
   fs.writeFileSync(__dirname + "/data/groups.json", JSON.stringify(data));
 
   console.log("Member updated!");

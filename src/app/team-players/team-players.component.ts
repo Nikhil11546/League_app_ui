@@ -44,7 +44,7 @@ export class TeamPlayersComponent implements OnInit {
       MemberPhone:new FormControl(''),
       ImageUrl:new FormControl(''),
       PerformanceGood:new FormControl(''),
-      PerformaneBad:new FormControl(''),
+      PerformanceBad:new FormControl(''),
       PerformanceAverage:new FormControl('')  
       }); 
       this.chartOptions = this.getDarkTheme();
@@ -107,7 +107,7 @@ export class TeamPlayersComponent implements OnInit {
       MemberPhone:'',
       ImageUrl:'',
       PerformanceGood:'',
-      PerformaneBad:'',
+      PerformanceBad:'',
       PerformanceAverage:'', 
       OrganizationName: this.teamDetails.OrganizationName
       // SponsorPhone:''
@@ -126,7 +126,7 @@ export class TeamPlayersComponent implements OnInit {
       MemberPhone: memberDetails.MemberPhone,
       // ImageUrl:memberDetails.ImageUrl,
       PerformanceGood:memberDetails.PerformanceGood,
-      PerformaneBad:memberDetails.PerformaneBad,
+      PerformanceBad:memberDetails.PerformanceBad,
       PerformanceAverage:memberDetails.PerformanceAverage, 
       age: memberDetails.age,
       OrganizationName: this.teamDetails.OrganizationName
@@ -195,7 +195,7 @@ export class TeamPlayersComponent implements OnInit {
       labels: ['Good Performance', 'Average Performance', 'Bad Performance'],
       datasets: [
         {
-          data: [memberDetails.PerformanceGood, memberDetails.PerformanceAverage, memberDetails.PerformaneBad],
+          data: [memberDetails.PerformanceGood, memberDetails.PerformanceAverage, memberDetails.PerformanceBad],
           backgroundColor: [
             "#42A5F5",
             "#66BB6A",
